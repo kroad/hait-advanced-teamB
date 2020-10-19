@@ -25,6 +25,7 @@
       <h2>結果</h2>
       <div v-for="song in songs" :key="song.id">
         <div>アーティスト：{{ song.artist_name }}</div>
+        <div>曲名：{{ song.title }}</div>
         <div>最高音：{{ song.heighest_name }}</div>
         <div>最低音：{{ song.lowest_name }}</div>
       </div>
