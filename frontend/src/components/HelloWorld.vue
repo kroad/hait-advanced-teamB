@@ -1,62 +1,90 @@
 
 <template>
   <div>
-    <div>
+    <!-- <div>
       <button v-on:click="sendAPItoSong1">API1へリクエストを送る</button>
-    </div>
+    </div> -->
     <div>
-      
+      <div>
+        <label for="artist1">歌手1</label>
+        <input id="artist1" type="number" v-model.number="info.artist1" />
+      </div>
+      <div>
+        <label for="artist2">歌手2</label>
+        <input id="artist2" type="number" v-model.number="info.artist2" />
+      </div>
+      <div>
+        <label for="heighest">最高音</label>
+        <input id="heighest" type="number" v-model.number="info.heighest" />
+      </div>
+      <div>
+        <label for="lowest">最低音</label>
+        <input id="lowest" type="number" v-model.number="info.lowest" />
+      </div>
       <button v-on:click="sendAPItoSong2">API2へリクエストを送る</button>
+      <h2>結果</h2>
+      <div v-for="song in songs" :key="song.id">
+        <div>アーティスト：{{ song.artist_name }}</div>
+        <div>最高音：{{ song.heighest_name }}</div>
+        <div>最低音：{{ song.lowest_name }}</div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios";
 export default {
-  name: 'HelloWorld',
-  props: {
-  },
+  name: "HelloWorld",
+  props: {},
   data() {
     return {
-    }
+      info: {
+        artist1: 1,
+        artist2: null,
+        heighest: 84,
+        lowest: 1,
+      },
+      songs: [],
+    };
   },
   methods: {
-    sendAPItoSong1:() => {
+    // sendAPItoSong1:() => {
+    //   axios
+    //   .get("http://127.0.0.1:8000/api/v1/songs1/",{
+    //     params: {
+    //       artist:1,
+    //       heighest__lte:70,
+    //       lowest__gte:2
+    //     }
+    //   })
+    //   .then(response => {
+    //     console.log(response);
+    //   })
+    //   .catch(error => {
+    //     console.log(error)
+    //   })
+    // },
+    sendAPItoSong2() {
       axios
-      .get("http://127.0.0.1:8000/api/v1/songs1/",{
-        params: {
-          artist:1,
-          heighest__lte:70,
-          lowest__gte:2
-        }
-      })
-      .then(response => {
-        console.log(response);
-      })
-      .catch(error => {
-        console.log(error)
-      })
+        .get("http://127.0.0.1:8000/api/v1/songs2/", {
+          params: {
+            artist1: this.info.artist1,
+            artist2: this.info.artist2,
+            heighest: this.info.heighest,
+            lowest: this.info.lowest,
+          },
+        })
+        .then((response) => {
+          this.songs = response.data;
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
-    sendAPItoSong2:() => {
-      axios
-      .get("http://127.0.0.1:8000/api/v1/songs2/",{
-        params: {
-          artist1:1,
-          artist2:2,
-          heighest:65,
-          lowest:10,
-        }
-      })
-      .then(response => {
-        console.log(response);
-      })
-      .catch(error => {
-        console.log(error)
-      })
-    }
   },
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
