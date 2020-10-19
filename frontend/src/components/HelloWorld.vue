@@ -20,6 +20,9 @@ export default {
       axios
       .get("http://127.0.0.1:8000/api/v1/songs/",{
         params: {
+          artist:1,
+          heighest__lte:70,
+          lowest__gte:2
         }
       })
       .then(response => {

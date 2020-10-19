@@ -5,6 +5,7 @@ from .serializers import SongSerializer
 
 from django_filters import rest_framework as filters
 
+# # 汎用クラスViewを使ったやつ
 # class SongListAPIView(generics.ListAPIView):
 #     """曲モデルの取得APIクラス"""
 
@@ -21,6 +22,7 @@ from django_filters import rest_framework as filters
 #             return Song.objects.filter(artist=artist, heighest__lte=heighest,lowest__gte=lowest)
 #         return queryset
 
+# ModelViewSetとdjango-filterを使ったやつ
 class SongFilter(filters.FilterSet):
     """曲モデル用フィルタクラス"""
     heighest__lte = filters.NumberFilter(field_name='heighest', lookup_expr='lte')
