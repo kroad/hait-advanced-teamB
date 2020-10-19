@@ -1,8 +1,13 @@
 
 <template>
   <div>
-    <button v-on:click="sendAPItoSong1">API1へリクエストを送る</button>
-    <button v-on:click="sendAPItoSong2">API2へリクエストを送る</button>
+    <div>
+      <button v-on:click="sendAPItoSong1">API1へリクエストを送る</button>
+    </div>
+    <div>
+      
+      <button v-on:click="sendAPItoSong2">API2へリクエストを送る</button>
+    </div>
   </div>
 </template>
 
@@ -29,18 +34,25 @@ export default {
       .then(response => {
         console.log(response);
       })
+      .catch(error => {
+        console.log(error)
+      })
     },
     sendAPItoSong2:() => {
       axios
       .get("http://127.0.0.1:8000/api/v1/songs2/",{
         params: {
-          artist:1,
-          heighest:70,
-          lowest:2,
+          artist1:1,
+          artist2:2,
+          heighest:65,
+          lowest:10,
         }
       })
       .then(response => {
         console.log(response);
+      })
+      .catch(error => {
+        console.log(error)
       })
     }
   },

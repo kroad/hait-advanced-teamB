@@ -5,6 +5,7 @@ from .serializers import SongSerializer
 
 from django_filters import rest_framework as filters
 
+from django.db.models import Q
 
 # ModelViewSetとdjango-filterを使ったやつ
 class SongFilter(filters.FilterSet):
@@ -33,10 +34,11 @@ class SongListAPIView(generics.ListAPIView):
     def get_queryset(self):
         queryset = Song.objects.all()
         if self.request.query_params :
-            artist = self.request.GET.get('artist')
+            artist1 = self.request.GET.get('artist1')
+            artist2 = self.request.GET.get('artist2')
             heighest = self.request.GET.get('heighest')
             lowest = self.request.GET.get('lowest')
             # model = pd.read_pickle()
             # result = model.predict()
-            return Song.objects.filter(artist=artist, heighest__lte=heighest,lowest__gte=lowest)
+            return Song.objects.filter(Q(artist=artist1)|Q(artist=artist2),heighest__lte=heighest,lowest__gte=lowest)
         return queryset
