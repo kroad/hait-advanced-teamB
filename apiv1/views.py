@@ -5,22 +5,6 @@ from .serializers import SongSerializer
 
 from django_filters import rest_framework as filters
 
-# # 汎用クラスViewを使ったやつ
-# class SongListAPIView(generics.ListAPIView):
-#     """曲モデルの取得APIクラス"""
-
-#     serializer_class = SongSerializer
-
-#     def get_queryset(self):
-#         queryset = Song.objects.all()
-#         if self.request.query_params :
-#             artist = self.request.GET.get('artist')
-#             heighest = self.request.GET.get('heighest')
-#             lowest = self.request.GET.get('lowest')
-#             # model = pd.read_pickle()
-#             # result = model.predict()
-#             return Song.objects.filter(artist=artist, heighest__lte=heighest,lowest__gte=lowest)
-#         return queryset
 
 # ModelViewSetとdjango-filterを使ったやつ
 class SongFilter(filters.FilterSet):
@@ -39,3 +23,20 @@ class SongViewSet(viewsets.ModelViewSet):
     serializer_class = SongSerializer
     filter_backends = [filters.DjangoFilterBackend]
     filterset_class = SongFilter
+
+# 汎用クラスViewを使ったやつ
+class SongListAPIView(generics.ListAPIView):
+    """曲モデルの取得APIクラス"""
+
+    serializer_class = SongSerializer
+    
+    def get_queryset(self):
+        queryset = Song.objects.all()
+        if self.request.query_params :
+            artist = self.request.GET.get('artist')
+            heighest = self.request.GET.get('heighest')
+            lowest = self.request.GET.get('lowest')
+            # model = pd.read_pickle()
+            # result = model.predict()
+            return Song.objects.filter(artist=artist, heighest__lte=heighest,lowest__gte=lowest)
+        return queryset
