@@ -20,11 +20,15 @@
       </div>
       <button v-on:click="sendToSongApi">APIへリクエストを送る</button>
       <h2>結果</h2>
-      <div v-for="song in songs" :key="song.id">
-        <div>アーティスト：{{ song.artist_name }}</div>
-        <div>曲名：{{ song.title }}</div>
-        <div>最高音：{{ song.heighest_name }}</div>
-        <div>最低音：{{ song.lowest_name }}</div>
+      <div v-for="artist in artists" :key="artist">
+        <p>アーティスト：{{ artist }}</p>
+        <div v-for="song in songs" :key="song.id">
+          <template v-if="song.artist_name === artist">
+            <p>曲名：{{ song.title }}</p>
+            <p>最高音：{{ song.heighest_name }}</p>
+            <p>最低音：{{ song.lowest_name }}</p>
+          </template>
+        </div>
       </div>
     </div>
   </div>
@@ -45,6 +49,17 @@ export default {
       },
       songs: [],
     };
+  },
+  computed: {
+    artists: function () {
+      let artists = [];
+      for (let song of this.songs) {
+        if (!artists.includes(song.artist_name)) {
+          artists.push(song.artist_name);
+        }
+      }
+      return artists;
+    },
   },
   methods: {
     sendToSongApi() {
