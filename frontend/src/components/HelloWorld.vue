@@ -2,17 +2,16 @@
 <template>
   <div>
     <SongForm />
-    <Result :songs="songs" :artists="artists" />
+    <Result />
   </div>
 </template>
 
 <script>
-import Result from "./Result";
 import SongForm from "./SongForm";
+import Result from "./Result";
 
 export default {
   name: "HelloWorld",
-
   components: {
     Result,
     SongForm,

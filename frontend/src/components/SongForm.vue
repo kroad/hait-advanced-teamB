@@ -31,19 +31,7 @@ export default {
         heighest: 84,
         lowest: 1,
       },
-      songs: [],
     };
-  },
-  computed: {
-    artists: function () {
-      let artists = [];
-      for (let song of this.songs) {
-        if (!artists.includes(song.artist_name)) {
-          artists.push(song.artist_name);
-        }
-      }
-      return artists;
-    },
   },
   methods: {
     sendToSongApi() {
@@ -57,8 +45,7 @@ export default {
           },
         })
         .then((response) => {
-          this.songs = response.data;
-          console.log(response);
+          this.$store.dispatch("addSongs", response);
         })
         .catch((error) => {
           console.log(error);

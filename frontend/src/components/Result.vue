@@ -16,14 +16,11 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
-  props: {
-    artists: {
-      type: Array,
-    },
-    songs: {
-      type: Array,
-    },
+  computed: {
+    ...mapGetters(["artists", "songs"]),
   },
 };
 </script>
