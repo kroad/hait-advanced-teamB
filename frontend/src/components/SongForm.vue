@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Record />
     <div>
       <label for="artist1">歌手1</label>
       <input id="artist1" type="number" v-model.number="info.artist1" />
@@ -22,6 +23,8 @@
 
 <script>
 import axios from "axios";
+import Record from "./Record";
+
 export default {
   data() {
     return {
@@ -51,6 +54,9 @@ export default {
           console.log(error);
         });
     },
+  },
+  components: {
+    Record,
   },
 };
 </script>
