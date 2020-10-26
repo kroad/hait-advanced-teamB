@@ -66,7 +66,7 @@ export default {
             console.log(chunks);
           });
           recorder.addEventListener("stop", () => {
-            const blob = new Blob(chunks, { type: "audio/mp3" });
+            const blob = new Blob(chunks, { type: "audio/wav" });
             this.source = window.URL.createObjectURL(blob);
             console.log(blob);
           });
