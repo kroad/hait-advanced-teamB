@@ -13,7 +13,7 @@ export default {
 <style scoped>
 div {
   /* margin-left: 56px; */
-  background-color: aqua;
+  background-color: gray;
   min-height: 100vh;
   width: auto;
   min-width: 56px;
