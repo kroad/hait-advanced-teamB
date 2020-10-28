@@ -1,14 +1,7 @@
 <template>
-  <v-navigation-drawer
-    color="grey darken-4"
-    expand-on-hover
-    mini-variant
-    permanent
-    dark
-    app
-  >
-    <v-list dense nav class="py-0">
-      <v-list-item two-line class="pt-6">
+  <div class="sidebar_component">
+    <v-list color="primary">
+      <v-list-item two-line>
         <v-list-item-icon>
           <v-icon>mdi-music-circle</v-icon>
         </v-list-item-icon>
@@ -31,7 +24,7 @@
         </v-list-item-content>
       </v-list-item>
     </v-list>
-  </v-navigation-drawer>
+  </div>
 </template>
 <script>
 export default {
@@ -49,4 +42,13 @@ export default {
 };
 </script>
 <style scoped>
+.sidebar_component {
+  background-color: purple;
+  height: 100%;
+  width: 60px;
+  transition: width 0.2s;
+}
+.sidebar_component:hover {
+  width: 245px;
+}
 </style>

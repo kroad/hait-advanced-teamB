@@ -1,5 +1,7 @@
 <template>
-  <Result />
+  <div>
+    <Result />
+  </div>
 </template>
 
 <script>
@@ -12,10 +14,12 @@ export default {
 </script>
 <style scoped>
 div {
-  /* margin-left: 56px; */
   background-color: gray;
-  min-height: 100vh;
-  width: auto;
-  min-width: 56px;
+  height: 100%;
+  width: 100px;
+  transition: width 0.2s;
+}
+div:hover {
+  width: 100%;
 }
 </style>

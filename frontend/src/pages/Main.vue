@@ -1,21 +1,19 @@
 <template>
   <div>
-    <GlobalSubBar />
     <SongForm />
   </div>
 </template>
-
 <script>
-import SongForm from "./SongForm";
-import GlobalSubBar from "../pages/GlobalSubBar";
-
+import SongForm from "../components/SongForm";
 export default {
-  name: "HelloWorld",
   components: {
     SongForm,
-    GlobalSubBar,
   },
 };
 </script>
 <style scoped>
+div {
+  background-color: orange;
+  height: 100%;
+}
 </style>
