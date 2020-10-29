@@ -14,26 +14,23 @@ class SongListAPIView(generics.ListAPIView):
     def get_queryset(self):
         queryset = Song.objects.all()
         if self.request.query_params:
-            artist1 = self.request.GET.get("artist1")
-            artist2 = self.request.GET.get("artist2")
-            artist3 = self.request.GET.get("artist3")
-            artist4 = self.request.GET.get("artist4")
-            artist5 = self.request.GET.get("artist5")
-            artist6 = self.request.GET.get("artist6")
-            artist7 = self.request.GET.get("artist7")
             heighest = self.request.GET.get("heighest")
             lowest = self.request.GET.get("lowest")
             # model = pd.read_pickle()
             # result = model.predict()
+            artists = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
             return Song.objects.filter(
-                Q(artist=artist1)
-                | Q(artist=artist2)
-                | Q(artist=artist3)
-                | Q(artist=artist4)
-                | Q(artist=artist5)
-                | Q(artist=artist6)
-                | Q(artist=artist7)
+                Q(artist=artists[0])
+                | Q(artist=artists[1])
+                | Q(artist=artists[2])
+                | Q(artist=artists[3])
+                | Q(artist=artists[4])
+                | Q(artist=artists[5])
+                | Q(artist=artists[6])
+                | Q(artist=artists[7])
+                | Q(artist=artists[8])
+                | Q(artist=artists[9])
             ).filter(
                 heighest__lte=Scale.objects.get(japan=heighest).id,
                 lowest__gte=Scale.objects.get(japan=lowest).id,
