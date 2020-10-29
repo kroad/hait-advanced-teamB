@@ -1,6 +1,6 @@
-from rest_framework import generics, viewsets
+from rest_framework import generics
 
-from karaoke.models import Song
+from karaoke.models import Song, Scale
 from .serializers import SongSerializer
 
 from django.db.models import Q
@@ -25,6 +25,7 @@ class SongListAPIView(generics.ListAPIView):
             lowest = self.request.GET.get("lowest")
             # model = pd.read_pickle()
             # result = model.predict()
+
             return Song.objects.filter(
                 Q(artist=artist1)
                 | Q(artist=artist2)
@@ -32,8 +33,9 @@ class SongListAPIView(generics.ListAPIView):
                 | Q(artist=artist4)
                 | Q(artist=artist5)
                 | Q(artist=artist6)
-                | Q(artist=artist7),
-                heighest__lte=heighest,
-                lowest__gte=lowest,
+                | Q(artist=artist7)
+            ).filter(
+                heighest__lte=Scale.objects.get(japan=heighest).id,
+                lowest__gte=Scale.objects.get(japan=lowest).id,
             )
         return queryset
