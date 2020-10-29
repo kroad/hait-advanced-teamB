@@ -16,10 +16,10 @@ export default {
 div {
   background-color: gray;
   height: 100%;
-  width: 100px;
+  width: 50px;
   transition: width 0.2s;
 }
 div:hover {
-  width: 100%;
+  width: 200px;
 }
 </style>

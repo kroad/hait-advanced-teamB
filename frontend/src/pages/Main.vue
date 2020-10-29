@@ -1,13 +1,13 @@
 <template>
   <div>
-    <SongForm />
+    <SendToApi />
   </div>
 </template>
 <script>
-import SongForm from "../components/SongForm";
+import SendToApi from "../components/SendToApi";
 export default {
   components: {
-    SongForm,
+    SendToApi,
   },
 };
 </script>

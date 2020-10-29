@@ -28,6 +28,7 @@ export default new Vuex.Store({
     },
     actions:{
         addSongs(context,response){
+            // 後で消す
             console.log(context);
             console.log(response);
             context.commit("addSongs",response)
