@@ -1,9 +1,8 @@
 <template>
   <div>
-    <button @click="record">録音</button>
-    <audio id="player" controls :src="source"></audio>
-
-    <p>{{ source }}</p>
+    <v-btn @click="record" fab x-large dark color="purple">
+      <v-icon>mdi-microphone</v-icon>
+    </v-btn>
   </div>
 </template>
 
@@ -23,12 +22,14 @@ export default {
           let chunks = [];
           recorder.addEventListener("dataavailable", (e) => {
             chunks.push(e.data);
+            // 後で消す
             console.log(e);
             console.log(chunks);
           });
           recorder.addEventListener("stop", () => {
             const blob = new Blob(chunks, { type: "audio/wav" });
-            this.source = window.URL.createObjectURL(blob);
+            this.$store.dispatch("addVoice", blob);
+            // 後で消す
             console.log(blob);
           });
           recorder.start(1000);
@@ -37,6 +38,7 @@ export default {
           }, 5000);
         })
         .catch((error) => {
+          // 後で消す
           console.log(error);
         });
     },

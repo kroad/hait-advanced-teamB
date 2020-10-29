@@ -7,6 +7,7 @@ export default new Vuex.Store({
     // グローバル変数みたいなもの
     state:{
         songs:[],
+        voiceSource:"",
         scale_jp: [
             "lowlowA",
             "lowlowA#",
@@ -200,12 +201,16 @@ export default new Vuex.Store({
             return artists;
         },
         songs: state => state.songs,
+        voiceSource: state => state.voiceSource,
         scale_jp: state => state.scale_jp,
         scale_uni: state => state.scale_uni,
     },
     mutations:{
         addSongs(state,response){
             state.songs = response.data;
+        },
+        addVoice(state,blob){
+            state.voiceSource = window.URL.createObjectURL(blob);
         }
     },
     actions:{
@@ -214,7 +219,10 @@ export default new Vuex.Store({
             console.log(context);
             console.log(response);
             context.commit("addSongs",response)
-        }
+        },
+        addVoice(context,blob){
+            context.commit("addVoice",blob)
+        },
     }
 
 });

@@ -8,6 +8,7 @@
         <v-divider></v-divider>
         <v-stepper-step step="2">声を録音</v-stepper-step>
       </v-stepper-header>
+
       <v-stepper-items>
         <v-stepper-content step="1">
           <v-container>
@@ -34,7 +35,7 @@
                 >
                 </v-select>
               </v-col>
-              <!-- <v-col>
+              <v-col>
                 <v-select
                   :items="scale_jp"
                   label="裏声最低音"
@@ -43,28 +44,36 @@
                   outlined
                 >
                 </v-select>
-              </v-col> -->
+              </v-col>
             </v-row>
           </v-container>
-
           <v-btn color="primary" @click="e1 = 2"> 次へ </v-btn>
-
-          <v-btn text>Cancel</v-btn>
         </v-stepper-content>
       </v-stepper-items>
+
       <v-stepper-items>
         <v-stepper-content step="2">
           <v-card class="mb-12" color="grey lighten-1">
             <Record />
           </v-card>
-
-          <v-btn color="primary" @click="sendToSongApi">APIへリクエスト </v-btn>
-
-          <v-btn text @click="e1 = 1">Cancel</v-btn>
+          <v-container>
+            <v-row>
+              <v-col cols="auto">
+                <v-btn @click="e1 = 1">戻る</v-btn>
+              </v-col>
+              <v-col>
+                <audio id="player" controls :src="voiceSource"></audio>
+              </v-col>
+              <v-col>
+                <v-btn color="primary" @click="sendToSongApi"
+                  >APIへリクエスト</v-btn
+                >
+              </v-col>
+            </v-row>
+          </v-container>
         </v-stepper-content>
       </v-stepper-items>
     </v-stepper>
-    <p>{{ heighest }}</p>
   </div>
 </template>
 
@@ -72,12 +81,10 @@
 import axios from "axios";
 import Record from "./Record";
 import { mapGetters } from "vuex";
-// import HighLowSelectForm from "./HighLowSelectForm";
 
 export default {
   components: {
     Record,
-    // HighLowSelectForm,
   },
   data() {
     return {
@@ -87,7 +94,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["scale_jp", "scale_uni"]),
+    ...mapGetters(["scale_jp", "scale_uni", "voiceSource"]),
   },
   methods: {
     sendToSongApi() {
@@ -110,7 +117,4 @@ export default {
 </script>
 
 <style scoped>
-div {
-  color: red;
-}
 </style>
