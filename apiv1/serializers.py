@@ -6,10 +6,14 @@ from karaoke.models import Song
 class SongSerializer(serializers.ModelSerializer):
 
     artist_name = serializers.ReadOnlyField(source="artist.name")
-    heighest_japan = serializers.ReadOnlyField(source="heighest.japan")
-    heighest_universal = serializers.ReadOnlyField(source="heighest.universal")
-    lowest_japan = serializers.ReadOnlyField(source="lowest.japan")
-    lowest_universal = serializers.ReadOnlyField(source="lowest.universal")
+    z_heighest_japan = serializers.ReadOnlyField(source="z_heighest.japan")
+    z_heighest_universal = serializers.ReadOnlyField(source="z_heighest.universal")
+    u_heighest_japan = serializers.ReadOnlyField(source="u_heighest.japan")
+    u_heighest_universal = serializers.ReadOnlyField(source="u_heighest.universal")
+    z_lowest_japan = serializers.ReadOnlyField(source="z_lowest.japan")
+    z_lowest_universal = serializers.ReadOnlyField(source="z_lowest.universal")
+    u_lowest_japan = serializers.ReadOnlyField(source="u_lowest.japan")
+    u_lowest_universal = serializers.ReadOnlyField(source="u_lowest.universal")
 
     class Meta:
         model = Song
@@ -17,11 +21,13 @@ class SongSerializer(serializers.ModelSerializer):
             "id",
             "title",
             "artist_name",
-            "heighest_japan",
-            "heighest_universal",
-            "lowest_japan",
-            "lowest_universal",
+            "z_heighest_japan",
+            "z_heighest_universal",
+            "u_heighest_japan",
+            "u_heighest_universal",
+            "z_lowest_japan",
+            "z_lowest_universal",
+            "u_lowest_japan",
+            "u_lowest_universal",
             "artist",
-            "heighest",
-            "lowest",
         ]

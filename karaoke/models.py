@@ -33,16 +33,43 @@ class Song(models.Model):
         db_table = "song"
 
     title = models.CharField(verbose_name="タイトル", max_length=50)
-    heighest = models.ForeignKey(
+    z_heighest = models.ForeignKey(
         Scale,
-        verbose_name="最高音",
+        verbose_name="地声最高音",
         on_delete=models.PROTECT,
-        related_name="heighest_scale",
+        related_name="z_heighest",
+        null=True,
+        blank=True,
     )
-    lowest = models.ForeignKey(
-        Scale, verbose_name="最低音", on_delete=models.PROTECT, related_name="lowest_scale"
+    z_lowest = models.ForeignKey(
+        Scale,
+        verbose_name="地声最低音",
+        on_delete=models.PROTECT,
+        related_name="z_lowest",
+        null=True,
+        blank=True,
     )
-    artist = models.ForeignKey(Artist, verbose_name="歌手", on_delete=models.PROTECT)
+    u_heighest = models.ForeignKey(
+        Scale,
+        verbose_name="裏声最高音",
+        on_delete=models.PROTECT,
+        related_name="u_heighest",
+        null=True,
+        blank=True,
+    )
+    u_lowest = models.ForeignKey(
+        Scale,
+        verbose_name="裏声最低音",
+        on_delete=models.PROTECT,
+        related_name="u_lowest",
+        null=True,
+        blank=True,
+    )
+    artist = models.ForeignKey(
+        Artist,
+        verbose_name="歌手",
+        on_delete=models.PROTECT,
+    )
 
     def __str__(self):
         return self.title

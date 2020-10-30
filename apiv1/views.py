@@ -14,8 +14,10 @@ class SongListAPIView(generics.ListAPIView):
     def get_queryset(self):
         queryset = Song.objects.all()
         if self.request.query_params:
-            heighest = self.request.GET.get("heighest")
-            lowest = self.request.GET.get("lowest")
+            z_lowest = self.request.GET.get("z_lowest")
+            z_heighest = self.request.GET.get("z_heighest")
+            # 後で戻す
+            # u_heighest = self.request.GET.get("u_heighest")
             # model = pd.read_pickle()
             # result = model.predict()
             artists = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -32,7 +34,7 @@ class SongListAPIView(generics.ListAPIView):
                 | Q(artist=artists[8])
                 | Q(artist=artists[9])
             ).filter(
-                heighest__lte=Scale.objects.get(japan=heighest).id,
-                lowest__gte=Scale.objects.get(japan=lowest).id,
+                z_heighest__lte=Scale.objects.get(japan=z_heighest).id,
+                z_lowest__gte=Scale.objects.get(japan=z_lowest).id,
             )
         return queryset

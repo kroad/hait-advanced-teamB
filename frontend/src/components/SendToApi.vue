@@ -15,38 +15,43 @@
             <v-row>
               <v-col>
                 <v-select
-                  v-model="lowest"
+                  v-model="z_lowest"
                   :items="scale_jp"
                   label="地声最低音"
                   hint="地声で最も低い音を選んでください"
                   persistent-hint
                   outlined
+                  :rules="rules"
                 >
                 </v-select>
               </v-col>
               <v-col>
                 <v-select
-                  v-model="heighest"
+                  v-model="z_heighest"
                   :items="scale_jp"
                   label="地声最高音"
                   hint="地声で最も高い音を選んでください"
                   persistent-hint
                   outlined
+                  :rules="rules"
                 >
                 </v-select>
               </v-col>
               <v-col>
                 <v-select
+                  v-model="u_heighest"
                   :items="scale_jp"
-                  label="裏声最低音"
+                  label="裏声最高音"
                   hint="裏声で最も高い音を選んでください"
                   persistent-hint
                   outlined
+                  :rules="rules"
                 >
                 </v-select>
               </v-col>
             </v-row>
           </v-container>
+
           <v-btn color="primary" @click="e1 = 2"> 次へ </v-btn>
         </v-stepper-content>
       </v-stepper-items>
@@ -89,20 +94,41 @@ export default {
   data() {
     return {
       e1: 1,
-      heighest: "hihihihiC",
-      lowest: "lowlowA",
+      z_lowest: "lowlowA",
+      z_heighest: "mid2C",
+      u_heighest: "hihihihiC",
+      rules: [
+        () => {
+          return (
+            (this.z_lowest_index < this.z_heighest_index &&
+              this.z_heighest_index < this.u_heighest_index) ||
+            "順序が正しくありません"
+          );
+        },
+      ],
     };
   },
   computed: {
     ...mapGetters(["scale_jp", "scale_uni", "voiceSource"]),
+    z_lowest_index() {
+      return this.scale_jp.indexOf(this.z_lowest);
+    },
+    z_heighest_index() {
+      return this.scale_jp.indexOf(this.z_heighest);
+    },
+    u_heighest_index() {
+      return this.scale_jp.indexOf(this.u_heighest);
+    },
   },
   methods: {
     sendToSongApi() {
       axios
         .get("http://127.0.0.1:8000/api/v1/songs/", {
           params: {
-            heighest: this.heighest,
-            lowest: this.lowest,
+            z_lowest: this.z_lowest,
+            z_heighest: this.z_heighest,
+            // 後で送れるようにする
+            // u_heighest: this.u_heighest,
           },
         })
         .then((response) => {
