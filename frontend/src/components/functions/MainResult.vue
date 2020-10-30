@@ -1,9 +1,9 @@
 <template>
   <div class="result-wrapper">
     <v-list color="blue">
-      <v-list-item v-for="(artist, index) in artists" :key="artist" link>
+      <v-list-item v-for="song in songs" :key="song.id" link>
         <v-list-item-content>
-          <v-list-item-title> {{ index + 1 }}-{{ artist }}</v-list-item-title>
+          <v-list-item-title> {{ song }}</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
     </v-list>
@@ -15,7 +15,7 @@ import { mapGetters } from "vuex";
 
 export default {
   computed: {
-    ...mapGetters(["artists"]),
+    ...mapGetters(["artists", "songs"]),
   },
 };
 </script>

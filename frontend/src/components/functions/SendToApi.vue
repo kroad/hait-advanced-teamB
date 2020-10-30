@@ -1,43 +1,49 @@
 <template>
-  <v-stepper v-model="e1" alt-labels>
-    <v-stepper-header>
-      <v-stepper-step :complete="e1 > 1" step="1"
-        >最高音最低音を選択</v-stepper-step
-      >
-      <v-divider></v-divider>
-      <v-stepper-step step="2">声を録音</v-stepper-step>
-    </v-stepper-header>
+  <div>
+    <v-stepper v-model="e1" alt-labels>
+      <v-stepper-header>
+        <v-stepper-step :complete="e1 > 1" step="1"
+          >最高音最低音を選択</v-stepper-step
+        >
+        <v-divider></v-divider>
+        <v-stepper-step step="2">声を録音</v-stepper-step>
+      </v-stepper-header>
 
-    <v-stepper-items>
-      <v-stepper-content step="1">
-        <ScaleSelectForm />
-        <v-btn color="primary" @click="e1 = 2"> 次へ </v-btn>
-      </v-stepper-content>
-    </v-stepper-items>
+      <v-stepper-items>
+        <v-stepper-content step="1">
+          <ScaleSelectForm />
+          <v-btn color="primary" @click="e1 = 2"> 次へ </v-btn>
+        </v-stepper-content>
+      </v-stepper-items>
 
-    <v-stepper-items>
-      <v-stepper-content step="2">
-        <v-card class="mb-12" color="grey lighten-1">
-          <Record />
-        </v-card>
-        <v-container>
-          <v-row>
-            <v-col cols="auto">
-              <v-btn @click="e1 = 1">戻る</v-btn>
-            </v-col>
-            <v-col>
-              <audio id="player" controls :src="voiceSource"></audio>
-            </v-col>
-            <v-col>
-              <v-btn color="primary" @click="sendToSongApi"
-                >APIへリクエスト</v-btn
-              >
-            </v-col>
-          </v-row>
-        </v-container>
-      </v-stepper-content>
-    </v-stepper-items>
-  </v-stepper>
+      <v-stepper-items>
+        <v-stepper-content step="2">
+          <v-card class="mb-12" color="grey lighten-1">
+            <Record />
+          </v-card>
+          <v-container>
+            <v-row>
+              <v-col cols="auto">
+                <v-btn @click="e1 = 1">戻る</v-btn>
+              </v-col>
+              <v-col>
+                <audio id="player" controls :src="voiceSource"></audio>
+              </v-col>
+              <v-col>
+                <v-btn color="primary">
+                  <router-link
+                    to="/measure/result"
+                    @click.native="sendToSongApi"
+                    >結果を表示</router-link
+                  >
+                </v-btn>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-stepper-content>
+      </v-stepper-items>
+    </v-stepper>
+  </div>
 </template>
 
 <script>

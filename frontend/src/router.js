@@ -1,12 +1,14 @@
-import Vue from "vue"
-import Router from "vue-router"
+import Vue from "vue";
+import Router from "vue-router";
 import SelectMode from "./components/pages/SelectMode";
+import MainResult from "./components/functions/MainResult";
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
-    mode:"history",
-    routes:[
-        {path:"/selectmode", component:SelectMode},
-    ]
-})
+  mode: "history",
+  routes: [
+    { path: "/measure/modes/select", component: SelectMode },
+    { path: "/measure/result", component: MainResult },
+  ],
+});

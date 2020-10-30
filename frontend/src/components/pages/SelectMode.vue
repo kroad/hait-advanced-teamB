@@ -1,14 +1,9 @@
 <template>
-  <div>
-    <component
-      :is="componentId"
-      @click-to-api="componentId = $event"
-    ></component>
-  </div>
+  <SendToApi />
 </template>
 <script>
 import SendToApi from "../functions/SendToApi";
-import MainResult from "../functions/MainResult";
+
 export default {
   data() {
     return {
@@ -17,7 +12,6 @@ export default {
   },
   components: {
     SendToApi,
-    MainResult,
   },
 };
 </script>
