@@ -16,10 +16,10 @@
 </template>
 
 <script>
-import Navbar from "../structures/Navbar";
-import Subbar from "../structures/Subbar";
-import Main from "../structures/Main";
-import Footer from "../structures/Footer";
+import Navbar from "./Navbar";
+import Subbar from "./Subbar";
+import Main from "./Main";
+import Footer from "./Footer";
 export default {
   name: "Base",
   components: {

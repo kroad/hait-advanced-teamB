@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Base from "./components/pages/Base";
+import Base from "./components/structures/Base";
 export default {
   name: "App",
   components: {
