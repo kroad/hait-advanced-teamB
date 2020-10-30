@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Result from "../components/Result";
+import Result from "./Result";
 export default {
   components: {
     Result,

@@ -16,12 +16,12 @@
 </template>
 
 <script>
-import Navbar from "./Navbar";
-import Subbar from "./Subbar";
-import Main from "./Main";
-import Footer from "./Footer";
+import Navbar from "../structures/Navbar";
+import Subbar from "../structures/Subbar";
+import Main from "../structures/Main";
+import Footer from "../structures/Footer";
 export default {
-  name: "HelloWorld",
+  name: "Base",
   components: {
     Navbar,
     Subbar,

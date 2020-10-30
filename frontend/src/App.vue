@@ -1,16 +1,15 @@
 <template>
   <v-app>
-    <HelloWorld />
+    <Base />
   </v-app>
 </template>
 
 <script>
-import HelloWorld from "./pages/HelloWorld";
-
+import Base from "./components/pages/Base";
 export default {
   name: "App",
   components: {
-    HelloWorld,
+    Base,
   },
 };
 </script>
