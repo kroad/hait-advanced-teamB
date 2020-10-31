@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import SubbarResult from "../functions/SubbarResult";
+import SubbarResult from "../pages/SubbarResult";
 export default {
   components: {
     SubbarResult,
