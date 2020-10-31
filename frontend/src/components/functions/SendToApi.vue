@@ -30,12 +30,13 @@
                 <audio id="player" controls :src="voiceSource"></audio>
               </v-col>
               <v-col>
-                <v-btn color="primary">
-                  <router-link
-                    to="/measure/result"
-                    @click.native="sendToSongApi"
-                    >結果を表示</router-link
-                  >
+                <v-btn
+                  color="primary"
+                  @click.native="sendToSongApi"
+                  router-link
+                  to="/measure/result"
+                >
+                  結果を表示
                 </v-btn>
               </v-col>
             </v-row>

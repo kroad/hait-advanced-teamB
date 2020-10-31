@@ -8,7 +8,7 @@ Vue.use(Router);
 export default new Router({
   mode: "history",
   routes: [
-    { path: "/measure/modes/select", component: SelectMode },
+    { path: "/measure/select", component: SelectMode },
     { path: "/measure/result", component: MainResult },
   ],
 });
