@@ -67,6 +67,7 @@ export default {
     ...mapGetters(["voiceSource", "myVoice"]),
   },
   methods: {
+    // 後でapiだけを切り出す
     sendToSongApi() {
       axios
         .get("http://127.0.0.1:8000/api/v1/songs/", {
