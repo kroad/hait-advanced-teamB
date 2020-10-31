@@ -1,6 +1,6 @@
 <template>
   <div class="sidebar_component">
-    <v-list color="primary">
+    <v-list color="primary" dark>
       <v-list-item two-line>
         <v-list-item-icon>
           <v-icon>mdi-music-circle</v-icon>

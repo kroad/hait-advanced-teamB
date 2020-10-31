@@ -67,7 +67,6 @@ export default {
   },
   methods: {
     sendToSongApi() {
-      this.$emit("click-to-api", "MainResult");
       axios
         .get("http://127.0.0.1:8000/api/v1/songs/", {
           params: {

@@ -1,6 +1,6 @@
 <template>
   <div class="result-wrapper">
-    <v-list color="blue">
+    <v-list color="blue" dark>
       <v-list-item v-for="artist in artists" :key="artist" link>
         <v-list-item-content>
           <v-list-item-title>{{ artist }}</v-list-item-title>
