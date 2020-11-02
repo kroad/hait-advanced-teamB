@@ -1,6 +1,11 @@
 <template>
   <div class="result-wrapper">
     <v-list color="blue" dark>
+      <v-list-item link to="/measure/result/" exact>
+        <v-list-item-content>
+          <v-list-item-title>測定結果</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
       <v-list-item
         v-for="(artist, index) in artists"
         :key="artist"
