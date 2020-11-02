@@ -54,7 +54,7 @@
               <v-divider></v-divider>
               <v-list-item
                 link
-                v-for="song in songsOfArtist"
+                v-for="song in songsOfArtistUrl"
                 :key="song.id"
                 router-link
                 :to="'/measure/result/' + artistUrl + '/' + song.title"
@@ -92,14 +92,14 @@ export default {
   props: ["artistUrl"],
   computed: {
     ...mapGetters(["songs", "myVoice"]),
-    songsOfArtist() {
-      let songsOfArtist = [];
+    songsOfArtistUrl() {
+      let songsOfArtistUrl = [];
       for (let song of this.songs) {
         if (this.artistUrl == song.artist_name) {
-          songsOfArtist.push(song);
+          songsOfArtistUrl.push(song);
         }
       }
-      return songsOfArtist;
+      return songsOfArtistUrl;
     },
   },
 };
