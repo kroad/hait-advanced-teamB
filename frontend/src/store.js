@@ -8,9 +8,9 @@ export default new Vuex.Store({
   state: {
     songs: [],
     myVoice: {
-      z_lowest: "lowlowA",
-      z_heighest: "hiC",
-      u_heighest: "hihihihiC",
+      z_lowest: "",
+      z_heighest: "",
+      u_heighest: "",
     },
     voiceSource: "",
     scale_jp: [

@@ -1,5 +1,7 @@
 <template>
-  <SendToApi />
+  <v-container>
+    <SendToApi />
+  </v-container>
 </template>
 <script>
 import SendToApi from "../functions/SendToApi";

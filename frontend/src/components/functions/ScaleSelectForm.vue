@@ -46,15 +46,7 @@ import { mapGetters } from "vuex";
 export default {
   data() {
     return {
-      rules: [
-        () => {
-          return (
-            (this.myVoiceIndex.z_lowest < this.myVoiceIndex.z_heighest &&
-              this.myVoiceIndex.z_heighest < this.myVoiceIndex.u_heighest) ||
-            "順序が正しくありません"
-          );
-        },
-      ],
+      rules: [],
     };
   },
   computed: {

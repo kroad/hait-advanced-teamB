@@ -3,9 +3,9 @@
     <v-container>
       <v-row>
         <v-col>
-          <v-toolbar dark>
-            <v-toolbar-title>測定結果</v-toolbar-title>
-          </v-toolbar>
+          <v-card dark>
+            <v-card-title>測定結果</v-card-title>
+          </v-card>
         </v-col>
       </v-row>
       <v-row>
@@ -40,23 +40,31 @@
         </v-col>
       </v-row>
       <v-row>
-        <v-col cols="12">
-          <v-simple-table dark>
-            <template v-slot:default>
-              <thead>
-                <tr>
-                  <th class="text-left">Artist</th>
-                  <th class="text-left">類似度</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="artist in artists" :key="artist">
-                  <td>{{ artist }}</td>
-                  <td>{{ 50 }}</td>
-                </tr>
-              </tbody>
-            </template>
-          </v-simple-table>
+        <v-col>
+          <v-card>
+            <v-list dark>
+              <v-list-item>
+                <v-list-item-content>
+                  <v-list-item-title> アーティスト名 </v-list-item-title>
+                </v-list-item-content>
+                <v-list-item-content>
+                  <v-list-item-title> 類似度 </v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+              <v-divider></v-divider>
+              <v-list-item
+                v-for="artist in artists"
+                :key="artist"
+                link
+                :to="'/measure/result/' + artist"
+              >
+                <v-list-item-content>
+                  {{ artist }}
+                </v-list-item-content>
+                <v-list-item-content> 50 </v-list-item-content>
+              </v-list-item>
+            </v-list>
+          </v-card>
         </v-col>
       </v-row>
     </v-container>

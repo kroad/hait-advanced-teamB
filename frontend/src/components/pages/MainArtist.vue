@@ -82,6 +82,11 @@
           </v-card>
         </v-col>
       </v-row>
+      <v-row>
+        <v-col>
+          <v-btn to="/measure/result"> 戻る </v-btn>
+        </v-col>
+      </v-row>
     </v-container>
   </div>
 </template>

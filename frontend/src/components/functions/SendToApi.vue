@@ -12,6 +12,7 @@
       <v-stepper-items>
         <v-stepper-content step="1">
           <ScaleSelectForm />
+          <v-btn to="/measure/" class="mr-4"> 戻る </v-btn>
           <v-btn color="primary" @click="e1 = 2"> 次へ </v-btn>
         </v-stepper-content>
       </v-stepper-items>
@@ -23,21 +24,18 @@
           </v-card>
           <v-container>
             <v-row>
-              <v-col cols="auto">
-                <v-btn @click="e1 = 1">戻る</v-btn>
-              </v-col>
               <v-col>
-                <audio id="player" controls :src="voiceSource"></audio>
-              </v-col>
-              <v-col>
+                <v-btn @click="e1 = 1" class="mr-4">戻る</v-btn>
                 <v-btn
                   color="primary"
                   @click.native="sendToSongApi"
-                  router-link
                   to="/measure/result"
                 >
                   結果を表示
                 </v-btn>
+              </v-col>
+              <v-col>
+                <audio id="player" controls :src="voiceSource"></audio>
               </v-col>
             </v-row>
           </v-container>

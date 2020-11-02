@@ -35,13 +35,14 @@
       <v-row>
         <v-col>
           <v-card>
-            <v-tabs class="elevation-2" dark>
+            <v-tabs v-model="tab" class="elevation-2" dark>
               <v-tabs-slider></v-tabs-slider>
-
               <v-tab v-for="i in tabs" :key="i" :href="`#tab-${i}`">
                 {{ i }}
               </v-tab>
+            </v-tabs>
 
+            <v-tabs-items v-model="tab" dark>
               <v-tab-item value="tab-詳細">
                 <v-list v-if="songOfSongUrl">
                   <v-list-item two-line>
@@ -92,7 +93,7 @@
                   <v-card-text> コメント </v-card-text>
                 </v-card>
               </v-tab-item>
-            </v-tabs>
+            </v-tabs-items>
           </v-card>
         </v-col>
       </v-row>
@@ -110,6 +111,7 @@ import { mapGetters } from "vuex";
 export default {
   data() {
     return {
+      tab: null,
       tabs: ["詳細", "歌詞", "コメント"],
     };
   },

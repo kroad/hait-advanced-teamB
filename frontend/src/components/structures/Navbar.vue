@@ -14,7 +14,13 @@
 
       <v-divider></v-divider>
 
-      <v-list-item v-for="item in items" :key="item.title" link :to="item.path">
+      <v-list-item
+        v-for="item in items"
+        :key="item.title"
+        link
+        :to="item.path"
+        exact
+      >
         <v-list-item-icon>
           <v-icon>{{ item.icon }}</v-icon>
         </v-list-item-icon>
@@ -31,8 +37,8 @@ export default {
   data() {
     return {
       items: [
-        { title: "ホーム", icon: "mdi-home", path: "/" },
-        { title: "測定", icon: "mdi-microphone", path: "/measure/select" },
+        { title: "ホーム", icon: "mdi-home", path: "/measure/select/" },
+        { title: "測定", icon: "mdi-microphone", path: "/measure/" },
         {
           title: "プレイリスト",
           icon: "mdi-playlist-music",
