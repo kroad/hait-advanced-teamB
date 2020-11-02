@@ -1,15 +1,10 @@
 <template>
   <div>
-    <SendToApi />
+    <router-view></router-view>
   </div>
 </template>
 <script>
-import SendToApi from "../components/SendToApi";
-export default {
-  components: {
-    SendToApi,
-  },
-};
+export default {};
 </script>
 <style scoped>
 div {

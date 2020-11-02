@@ -21,7 +21,7 @@ import Subbar from "./Subbar";
 import Main from "./Main";
 import Footer from "./Footer";
 export default {
-  name: "HelloWorld",
+  name: "Base",
   components: {
     Navbar,
     Subbar,
@@ -37,7 +37,7 @@ export default {
   display: grid;
   grid-template:
     "... ...... ...... .... ...... ..."
-    "... navbar subbar main footer ..." 100vh
+    "... navbar subbar main footer ..." minmax(100vh, 100%)
     "... ...... ...... .... ...... ..."
     / auto auto auto minmax(300px, 1fr) auto auto;
 }

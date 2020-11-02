@@ -1,14 +1,14 @@
 <template>
   <div>
-    <Result />
+    <SubbarResult />
   </div>
 </template>
 
 <script>
-import Result from "../components/Result";
+import SubbarResult from "../pages/SubbarResult";
 export default {
   components: {
-    Result,
+    SubbarResult,
   },
 };
 </script>
