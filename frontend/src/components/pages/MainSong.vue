@@ -1,8 +1,17 @@
 <template>
   <div>
-    <v-container> </v-container>
+    <v-container>
+      <p>{{ artistUrl }}{{ songUrl }}</p>
+    </v-container>
   </div>
 </template>
 <script>
-export default {};
+import { mapGetters } from "vuex";
+
+export default {
+  props: ["artistUrl", "songUrl"],
+  computed: {
+    ...mapGetters(["songs"]),
+  },
+};
 </script>

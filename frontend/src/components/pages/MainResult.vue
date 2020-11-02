@@ -1,6 +1,6 @@
 <template>
   <div class="result-wrapper">
-    <v-container fluid>
+    <v-container>
       <v-row>
         <v-col>
           <v-toolbar dark>

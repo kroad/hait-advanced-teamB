@@ -1,8 +1,13 @@
 <template>
   <div class="result-wrapper">
     <v-list color="blue" dark>
-      <!-- ここにrouter-linkを追加 -->
-      <v-list-item v-for="(artist, index) in artists" :key="artist" link>
+      <v-list-item
+        v-for="(artist, index) in artists"
+        :key="artist"
+        link
+        router-link
+        :to="'/measure/result/' + artist"
+      >
         <v-list-item-icon>
           <v-icon>{{ index + 1 }}</v-icon>
         </v-list-item-icon>
