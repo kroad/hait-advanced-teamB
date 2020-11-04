@@ -43,42 +43,128 @@
       <v-row>
         <v-col cols="12">
           <v-card dark>
-            <v-list>
-              <v-list-item>
-                <v-list-item-content> 曲名 </v-list-item-content>
-                <v-list-item-content> 地声最低音 </v-list-item-content>
-                <v-list-item-content> 地声最高音 </v-list-item-content>
-                <v-list-item-content> 裏声最低音 </v-list-item-content>
-                <v-list-item-content> 裏声最高音 </v-list-item-content>
-              </v-list-item>
-              <v-divider></v-divider>
-              <v-list-item
-                link
-                v-for="song in singable"
-                :key="song.id"
-                router-link
-                :to="'/measure/result/' + artistUrl + '/' + song.title"
-              >
-                <v-list-item-content>
-                  {{ song.title }}
-                </v-list-item-content>
-                <v-list-item-content>
-                  {{ song.z_lowest_japan }}
-                </v-list-item-content>
+            <v-tabs v-model="tab" class="elevation-2" dark>
+              <v-tabs-slider></v-tabs-slider>
+              <v-tab v-for="i in tabs" :key="i" :href="`#tab-${i}`">
+                {{ i }}
+              </v-tab>
+            </v-tabs>
+            <v-tabs-items v-model="tab" dark>
+              <v-tab-item value="tab-音域内の曲">
+                <v-list>
+                  <v-list-item>
+                    <v-list-item-content> 曲名 </v-list-item-content>
+                    <v-list-item-content> 地声最低音 </v-list-item-content>
+                    <v-list-item-content> 地声最高音 </v-list-item-content>
+                    <v-list-item-content> 裏声最低音 </v-list-item-content>
+                    <v-list-item-content> 裏声最高音 </v-list-item-content>
+                  </v-list-item>
+                  <v-divider></v-divider>
+                  <v-list-item
+                    link
+                    v-for="song in singable"
+                    :key="song.id"
+                    router-link
+                    :to="'/measure/result/' + artistUrl + '/' + song.title"
+                  >
+                    <v-list-item-content>
+                      {{ song.title }}
+                    </v-list-item-content>
+                    <v-list-item-content>
+                      {{ song.z_lowest_japan }}
+                    </v-list-item-content>
 
-                <v-list-item-content>
-                  {{ song.z_heighest_japan }}
-                </v-list-item-content>
+                    <v-list-item-content>
+                      {{ song.z_heighest_japan }}
+                    </v-list-item-content>
 
-                <v-list-item-content>
-                  {{ song.u_lowest_japan }}
-                </v-list-item-content>
+                    <v-list-item-content>
+                      {{ song.u_lowest_japan }}
+                    </v-list-item-content>
 
-                <v-list-item-content>
-                  {{ song.u_heighest_japan }}
-                </v-list-item-content>
-              </v-list-item>
-            </v-list>
+                    <v-list-item-content>
+                      {{ song.u_heighest_japan }}
+                    </v-list-item-content>
+                  </v-list-item>
+                </v-list>
+              </v-tab-item>
+              <v-tab-item value="tab-キーを変えれば歌える曲">
+                <v-list>
+                  <v-list-item>
+                    <v-list-item-content> 曲名 </v-list-item-content>
+                    <v-list-item-content> 地声最低音 </v-list-item-content>
+                    <v-list-item-content> 地声最高音 </v-list-item-content>
+                    <v-list-item-content> 裏声最低音 </v-list-item-content>
+                    <v-list-item-content> 裏声最高音 </v-list-item-content>
+                  </v-list-item>
+                  <v-divider></v-divider>
+                  <v-list-item
+                    link
+                    v-for="song in singableWithKeyChange"
+                    :key="song.id"
+                    router-link
+                    :to="'/measure/result/' + artistUrl + '/' + song.title"
+                  >
+                    <v-list-item-content>
+                      {{ song.title }}
+                    </v-list-item-content>
+                    <v-list-item-content>
+                      {{ song.z_lowest_japan }}
+                    </v-list-item-content>
+
+                    <v-list-item-content>
+                      {{ song.z_heighest_japan }}
+                    </v-list-item-content>
+
+                    <v-list-item-content>
+                      {{ song.u_lowest_japan }}
+                    </v-list-item-content>
+
+                    <v-list-item-content>
+                      {{ song.u_heighest_japan }}
+                    </v-list-item-content>
+                  </v-list-item>
+                </v-list>
+              </v-tab-item>
+              <v-tab-item value="tab-音域外の曲">
+                <v-list>
+                  <v-list-item>
+                    <v-list-item-content> 曲名 </v-list-item-content>
+                    <v-list-item-content> 地声最低音 </v-list-item-content>
+                    <v-list-item-content> 地声最高音 </v-list-item-content>
+                    <v-list-item-content> 裏声最低音 </v-list-item-content>
+                    <v-list-item-content> 裏声最高音 </v-list-item-content>
+                  </v-list-item>
+                  <v-divider></v-divider>
+                  <v-list-item
+                    link
+                    v-for="song in unsigable"
+                    :key="song.id"
+                    router-link
+                    :to="'/measure/result/' + artistUrl + '/' + song.title"
+                  >
+                    <v-list-item-content>
+                      {{ song.title }}
+                    </v-list-item-content>
+                    <v-list-item-content>
+                      {{ song.z_lowest_japan }}
+                    </v-list-item-content>
+
+                    <v-list-item-content>
+                      {{ song.z_heighest_japan }}
+                    </v-list-item-content>
+
+                    <v-list-item-content>
+                      {{ song.u_lowest_japan }}
+                    </v-list-item-content>
+
+                    <v-list-item-content>
+                      {{ song.u_heighest_japan }}
+                    </v-list-item-content>
+                  </v-list-item>
+                </v-list>
+              </v-tab-item>
+            </v-tabs-items>
           </v-card>
         </v-col>
       </v-row>
@@ -98,6 +184,12 @@ import { mapGetters } from "vuex";
 
 export default {
   props: ["artistUrl"],
+  data() {
+    return {
+      tab: null,
+      tabs: ["音域内の曲", "キーを変えれば歌える曲", "音域外の曲"],
+    };
+  },
   computed: {
     ...mapGetters(["songs", "myVoice", "myVoiceIndex"]),
     songsOfArtistUrl() {
@@ -122,28 +214,32 @@ export default {
       return singable;
     },
     singableWithKeyChange() {
-      let songableWithKeyChange = [];
+      let singableWithKeyChange = [];
       let myVoiceRange =
         this.myVoiceIndex.z_heighest - this.myVoiceIndex.z_lowest;
       for (let song of this.songsOfArtistUrl) {
         let songVoiceRange = song.z_heighest_id - song.z_lowest_id;
         if (myVoiceRange >= songVoiceRange) {
-          songableWithKeyChange.push(song);
+          singableWithKeyChange.push(song);
         }
       }
-      return songableWithKeyChange;
+      // singableに含まれているものは除く
+      singableWithKeyChange = singableWithKeyChange.filter(
+        (i) => this.singable.indexOf(i) == -1
+      );
+      return singableWithKeyChange;
     },
-    // 消す
-    myVoiceRange() {
-      return this.myVoiceIndex.z_heighest - this.myVoiceIndex.z_lowest;
-    },
-    songVoiceRange() {
-      let songVoiceRange = [];
+    unsigable() {
+      let unsigable = [];
+      let myVoiceRange =
+        this.myVoiceIndex.z_heighest - this.myVoiceIndex.z_lowest;
       for (let song of this.songsOfArtistUrl) {
-        let voiceRange = song.z_heighest_id - song.z_lowest_id;
-        songVoiceRange.push(voiceRange);
+        let songVoiceRange = song.z_heighest_id - song.z_lowest_id;
+        if (myVoiceRange < songVoiceRange) {
+          unsigable.push(song);
+        }
       }
-      return songVoiceRange;
+      return unsigable;
     },
   },
 };
