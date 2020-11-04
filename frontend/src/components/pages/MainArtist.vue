@@ -54,7 +54,7 @@
               <v-divider></v-divider>
               <v-list-item
                 link
-                v-for="song in songsOfArtistUrl"
+                v-for="song in songsInRangeOfMyVoice"
                 :key="song.id"
                 router-link
                 :to="'/measure/result/' + artistUrl + '/' + song.title"
@@ -96,7 +96,7 @@ import { mapGetters } from "vuex";
 export default {
   props: ["artistUrl"],
   computed: {
-    ...mapGetters(["songs", "myVoice"]),
+    ...mapGetters(["songs", "myVoice", "myVoiceIndex"]),
     songsOfArtistUrl() {
       let songsOfArtistUrl = [];
       for (let song of this.songs) {
@@ -105,6 +105,18 @@ export default {
         }
       }
       return songsOfArtistUrl;
+    },
+    songsInRangeOfMyVoice() {
+      let songsInRangeOfMyVoice = [];
+      for (let song of this.songsOfArtistUrl) {
+        if (
+          song.z_lowest_id >= this.myVoiceIndex.z_lowest &&
+          song.z_heighest_id <= this.myVoiceIndex.z_heighest
+        ) {
+          songsInRangeOfMyVoice.push(song);
+        }
+      }
+      return songsInRangeOfMyVoice;
     },
   },
 };

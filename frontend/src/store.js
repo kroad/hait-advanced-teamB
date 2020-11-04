@@ -206,11 +206,6 @@ export default new Vuex.Store({
       }
       return artists;
     },
-    songs: (state) => state.songs,
-    voiceSource: (state) => state.voiceSource,
-    scale_jp: (state) => state.scale_jp,
-    scale_uni: (state) => state.scale_uni,
-    myVoice: (state) => state.myVoice,
     myVoiceIndex: (state) => {
       let z_lowest = state.scale_jp.indexOf(state.myVoice.z_lowest);
       let z_heighest = state.scale_jp.indexOf(state.myVoice.z_heighest);
@@ -221,6 +216,11 @@ export default new Vuex.Store({
         u_heighest,
       };
     },
+    songs: (state) => state.songs,
+    voiceSource: (state) => state.voiceSource,
+    scale_jp: (state) => state.scale_jp,
+    scale_uni: (state) => state.scale_uni,
+    myVoice: (state) => state.myVoice,
   },
 
   mutations: {
