@@ -54,7 +54,7 @@
               <v-divider></v-divider>
               <v-list-item
                 link
-                v-for="song in songsInRangeOfMyVoice"
+                v-for="song in singable"
                 :key="song.id"
                 router-link
                 :to="'/measure/result/' + artistUrl + '/' + song.title"
@@ -88,6 +88,9 @@
         </v-col>
       </v-row>
     </v-container>
+    <p>{{ singableWithKeyChange }}</p>
+    <p>{{ myVoiceRange }}</p>
+    <p>{{ songVoiceRange }}</p>
   </div>
 </template>
 <script>
@@ -106,17 +109,41 @@ export default {
       }
       return songsOfArtistUrl;
     },
-    songsInRangeOfMyVoice() {
-      let songsInRangeOfMyVoice = [];
+    singable() {
+      let singable = [];
       for (let song of this.songsOfArtistUrl) {
         if (
           song.z_lowest_id >= this.myVoiceIndex.z_lowest &&
           song.z_heighest_id <= this.myVoiceIndex.z_heighest
         ) {
-          songsInRangeOfMyVoice.push(song);
+          singable.push(song);
         }
       }
-      return songsInRangeOfMyVoice;
+      return singable;
+    },
+    singableWithKeyChange() {
+      let songableWithKeyChange = [];
+      let myVoiceRange =
+        this.myVoiceIndex.z_heighest - this.myVoiceIndex.z_lowest;
+      for (let song of this.songsOfArtistUrl) {
+        let songVoiceRange = song.z_heighest_id - song.z_lowest_id;
+        if (myVoiceRange >= songVoiceRange) {
+          songableWithKeyChange.push(song);
+        }
+      }
+      return songableWithKeyChange;
+    },
+    // 消す
+    myVoiceRange() {
+      return this.myVoiceIndex.z_heighest - this.myVoiceIndex.z_lowest;
+    },
+    songVoiceRange() {
+      let songVoiceRange = [];
+      for (let song of this.songsOfArtistUrl) {
+        let voiceRange = song.z_heighest_id - song.z_lowest_id;
+        songVoiceRange.push(voiceRange);
+      }
+      return songVoiceRange;
     },
   },
 };
