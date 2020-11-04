@@ -207,9 +207,9 @@ export default new Vuex.Store({
       return artists;
     },
     myVoiceIndex: (state) => {
-      let z_lowest = state.scale_jp.indexOf(state.myVoice.z_lowest);
-      let z_heighest = state.scale_jp.indexOf(state.myVoice.z_heighest);
-      let u_heighest = state.scale_jp.indexOf(state.myVoice.u_heighest);
+      let z_lowest = state.scale_jp.indexOf(state.myVoice.z_lowest) + 1;
+      let z_heighest = state.scale_jp.indexOf(state.myVoice.z_heighest) + 1;
+      let u_heighest = state.scale_jp.indexOf(state.myVoice.u_heighest) + 1;
       return {
         z_lowest,
         z_heighest,

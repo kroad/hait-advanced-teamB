@@ -174,9 +174,8 @@
         </v-col>
       </v-row>
     </v-container>
-    <p>{{ singableWithKeyChange }}</p>
-    <p>{{ myVoiceRange }}</p>
-    <p>{{ songVoiceRange }}</p>
+    <p>myVoiceRange{{ myVoiceRange }}</p>
+    <p>songVoiceRange{{ songVoiceRange }}</p>
   </div>
 </template>
 <script>
@@ -240,6 +239,17 @@ export default {
         }
       }
       return unsigable;
+    },
+    myVoiceRange() {
+      return this.myVoiceIndex.z_heighest - this.myVoiceIndex.z_lowest;
+    },
+    songVoiceRange() {
+      let songVoiceRange = [];
+      for (let song of this.songsOfArtistUrl) {
+        let voiceRange = song.z_heighest_id - song.z_lowest_id;
+        songVoiceRange.push(voiceRange);
+      }
+      return songVoiceRange;
     },
   },
 };
