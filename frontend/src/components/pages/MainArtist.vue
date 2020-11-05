@@ -23,16 +23,12 @@
                 </v-list-item-content>
 
                 <v-list-item-content>
-                  <v-list-item-title>{{
-                    myVoice.z_highest
-                  }}</v-list-item-title>
+                  <v-list-item-title>{{ myVoice.z_highest }}</v-list-item-title>
                   <v-list-item-subtitle>地声最高音</v-list-item-subtitle>
                 </v-list-item-content>
 
                 <v-list-item-content>
-                  <v-list-item-title>{{
-                    myVoice.u_highest
-                  }}</v-list-item-title>
+                  <v-list-item-title>{{ myVoice.u_highest }}</v-list-item-title>
                   <v-list-item-subtitle>裏声最高音</v-list-item-subtitle>
                 </v-list-item-content>
               </v-list-item>
@@ -174,8 +170,6 @@
         </v-col>
       </v-row>
     </v-container>
-    <p>myVoiceRange{{ myVoiceRange }}</p>
-    <p>songVoiceRange{{ songVoiceRange }}</p>
   </div>
 </template>
 <script>
