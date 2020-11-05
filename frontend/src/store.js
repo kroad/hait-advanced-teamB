@@ -9,8 +9,8 @@ export default new Vuex.Store({
     songs: [],
     myVoice: {
       z_lowest: "",
-      z_heighest: "",
-      u_heighest: "",
+      z_highest: "",
+      u_highest: "",
     },
     voiceSource: "",
     scale_jp: [
@@ -208,12 +208,12 @@ export default new Vuex.Store({
     },
     myVoiceIndex: (state) => {
       let z_lowest = state.scale_jp.indexOf(state.myVoice.z_lowest) + 1;
-      let z_heighest = state.scale_jp.indexOf(state.myVoice.z_heighest) + 1;
-      let u_heighest = state.scale_jp.indexOf(state.myVoice.u_heighest) + 1;
+      let z_highest = state.scale_jp.indexOf(state.myVoice.z_highest) + 1;
+      let u_highest = state.scale_jp.indexOf(state.myVoice.u_highest) + 1;
       return {
         z_lowest,
-        z_heighest,
-        u_heighest,
+        z_highest,
+        u_highest,
       };
     },
     songs: (state) => state.songs,

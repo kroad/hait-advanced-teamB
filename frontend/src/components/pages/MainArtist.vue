@@ -24,14 +24,14 @@
 
                 <v-list-item-content>
                   <v-list-item-title>{{
-                    myVoice.z_heighest
+                    myVoice.z_highest
                   }}</v-list-item-title>
                   <v-list-item-subtitle>地声最高音</v-list-item-subtitle>
                 </v-list-item-content>
 
                 <v-list-item-content>
                   <v-list-item-title>{{
-                    myVoice.u_heighest
+                    myVoice.u_highest
                   }}</v-list-item-title>
                   <v-list-item-subtitle>裏声最高音</v-list-item-subtitle>
                 </v-list-item-content>
@@ -75,7 +75,7 @@
                     </v-list-item-content>
 
                     <v-list-item-content>
-                      {{ song.z_heighest_japan }}
+                      {{ song.z_highest_japan }}
                     </v-list-item-content>
 
                     <v-list-item-content>
@@ -83,7 +83,7 @@
                     </v-list-item-content>
 
                     <v-list-item-content>
-                      {{ song.u_heighest_japan }}
+                      {{ song.u_highest_japan }}
                     </v-list-item-content>
                   </v-list-item>
                 </v-list>
@@ -113,7 +113,7 @@
                     </v-list-item-content>
 
                     <v-list-item-content>
-                      {{ song.z_heighest_japan }}
+                      {{ song.z_highest_japan }}
                     </v-list-item-content>
 
                     <v-list-item-content>
@@ -121,7 +121,7 @@
                     </v-list-item-content>
 
                     <v-list-item-content>
-                      {{ song.u_heighest_japan }}
+                      {{ song.u_highest_japan }}
                     </v-list-item-content>
                   </v-list-item>
                 </v-list>
@@ -151,7 +151,7 @@
                     </v-list-item-content>
 
                     <v-list-item-content>
-                      {{ song.z_heighest_japan }}
+                      {{ song.z_highest_japan }}
                     </v-list-item-content>
 
                     <v-list-item-content>
@@ -159,7 +159,7 @@
                     </v-list-item-content>
 
                     <v-list-item-content>
-                      {{ song.u_heighest_japan }}
+                      {{ song.u_highest_japan }}
                     </v-list-item-content>
                   </v-list-item>
                 </v-list>
@@ -205,7 +205,7 @@ export default {
       for (let song of this.songsOfArtistUrl) {
         if (
           song.z_lowest_id >= this.myVoiceIndex.z_lowest &&
-          song.z_heighest_id <= this.myVoiceIndex.z_heighest
+          song.z_highest_id <= this.myVoiceIndex.z_highest
         ) {
           singable.push(song);
         }
@@ -215,9 +215,9 @@ export default {
     singableWithKeyChange() {
       let singableWithKeyChange = [];
       let myVoiceRange =
-        this.myVoiceIndex.z_heighest - this.myVoiceIndex.z_lowest;
+        this.myVoiceIndex.z_highest - this.myVoiceIndex.z_lowest;
       for (let song of this.songsOfArtistUrl) {
-        let songVoiceRange = song.z_heighest_id - song.z_lowest_id;
+        let songVoiceRange = song.z_highest_id - song.z_lowest_id;
         if (myVoiceRange >= songVoiceRange) {
           singableWithKeyChange.push(song);
         }
@@ -231,9 +231,9 @@ export default {
     unsigable() {
       let unsigable = [];
       let myVoiceRange =
-        this.myVoiceIndex.z_heighest - this.myVoiceIndex.z_lowest;
+        this.myVoiceIndex.z_highest - this.myVoiceIndex.z_lowest;
       for (let song of this.songsOfArtistUrl) {
-        let songVoiceRange = song.z_heighest_id - song.z_lowest_id;
+        let songVoiceRange = song.z_highest_id - song.z_lowest_id;
         if (myVoiceRange < songVoiceRange) {
           unsigable.push(song);
         }
@@ -241,12 +241,12 @@ export default {
       return unsigable;
     },
     myVoiceRange() {
-      return this.myVoiceIndex.z_heighest - this.myVoiceIndex.z_lowest;
+      return this.myVoiceIndex.z_highest - this.myVoiceIndex.z_lowest;
     },
     songVoiceRange() {
       let songVoiceRange = [];
       for (let song of this.songsOfArtistUrl) {
-        let voiceRange = song.z_heighest_id - song.z_lowest_id;
+        let voiceRange = song.z_highest_id - song.z_lowest_id;
         songVoiceRange.push(voiceRange);
       }
       return songVoiceRange;

@@ -33,11 +33,11 @@ class Song(models.Model):
         db_table = "song"
 
     title = models.CharField(verbose_name="タイトル", max_length=50)
-    z_heighest = models.ForeignKey(
+    z_highest = models.ForeignKey(
         Scale,
         verbose_name="地声最高音",
         on_delete=models.PROTECT,
-        related_name="z_heighest",
+        related_name="z_highest",
         null=True,
         blank=True,
     )
@@ -49,11 +49,11 @@ class Song(models.Model):
         null=True,
         blank=True,
     )
-    u_heighest = models.ForeignKey(
+    u_highest = models.ForeignKey(
         Scale,
         verbose_name="裏声最高音",
         on_delete=models.PROTECT,
-        related_name="u_heighest",
+        related_name="u_highest",
         null=True,
         blank=True,
     )
