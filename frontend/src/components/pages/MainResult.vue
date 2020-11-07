@@ -22,7 +22,7 @@
               <v-list-item two-line>
                 <v-list-item-content>
                   <v-list-item-title>{{
-                    myVoice.z_heighest
+                    myVoice.z_highest
                   }}</v-list-item-title>
                   <v-list-item-subtitle>地声最高音</v-list-item-subtitle>
                 </v-list-item-content>
@@ -30,7 +30,7 @@
               <v-list-item two-line>
                 <v-list-item-content>
                   <v-list-item-title>{{
-                    myVoice.u_heighest
+                    myVoice.u_highest
                   }}</v-list-item-title>
                   <v-list-item-subtitle>裏声最高音</v-list-item-subtitle>
                 </v-list-item-content>

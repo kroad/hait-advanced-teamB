@@ -66,7 +66,7 @@
                   <v-list-item two-line>
                     <v-list-item-content>
                       <v-list-item-title>
-                        {{ songOfSongUrl.z_heighest_japan }}
+                        {{ songOfSongUrl.z_highest_japan }}
                       </v-list-item-title>
                       <v-list-item-subtitle> 地声最高音 </v-list-item-subtitle>
                     </v-list-item-content>
@@ -74,7 +74,7 @@
                   <v-list-item two-line>
                     <v-list-item-content>
                       <v-list-item-title>
-                        {{ songOfSongUrl.u_heighest_japan }}
+                        {{ songOfSongUrl.u_highest_japan }}
                       </v-list-item-title>
                       <v-list-item-subtitle> 裏声最高音 </v-list-item-subtitle>
                     </v-list-item-content>

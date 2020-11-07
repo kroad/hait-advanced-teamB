@@ -68,14 +68,7 @@ export default {
     // 後でapiだけを切り出す
     sendToSongApi() {
       axios
-        .get("http://127.0.0.1:8000/api/v1/songs/", {
-          params: {
-            z_lowest: this.myVoice.z_lowest,
-            z_heighest: this.myVoice.z_heighest,
-            // 後で送れるようにする
-            // u_heighest: this.myVoice.u_heighest,
-          },
-        })
+        .get("http://127.0.0.1:8000/api/v1/songs/")
         .then((response) => {
           this.$store.dispatch("addSongs", response);
         })
