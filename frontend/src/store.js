@@ -227,8 +227,8 @@ export default new Vuex.Store({
     addSongs(state, response) {
       state.songs = response.data;
     },
-    addVoice(state, blob) {
-      state.voiceSource = window.URL.createObjectURL(blob);
+    storeVoiceSource(state, voiceSource) {
+      state.voiceSource = voiceSource;
     },
   },
 
@@ -239,8 +239,8 @@ export default new Vuex.Store({
       console.log(response);
       context.commit("addSongs", response);
     },
-    addVoice(context, blob) {
-      context.commit("addVoice", blob);
+    storeVoiceSource(context, voiceSource) {
+      context.commit("storeVoiceSource", voiceSource);
     },
   },
 });
