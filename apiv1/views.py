@@ -1,6 +1,6 @@
 from rest_framework import generics
 
-from karaoke.models import Song, Scale
+from karaoke.models import Song
 from .serializers import SongSerializer
 
 from django.db.models import Q
@@ -14,6 +14,8 @@ class SongListAPIView(generics.ListAPIView):
     def get_queryset(self):
         # model = pd.read_pickle()
         # result = model.predict()
+        file = self.request.GET.get("file")
+        print(file)
         artists = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
         return Song.objects.filter(

@@ -68,9 +68,13 @@ export default {
     // 後でapiだけを切り出す
     sendToSongApi() {
       axios
-        .get("http://127.0.0.1:8000/api/v1/songs/")
+        .get("http://127.0.0.1:8000/api/v1/songs/", {
+          params: {
+            file: this.voiceSource,
+          },
+        })
         .then((response) => {
-          this.$store.dispatch("addSongs", response);
+          this.$store.dispatch("storeSongs", response);
         })
         .catch((error) => {
           console.log(error);

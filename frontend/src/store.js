@@ -224,7 +224,7 @@ export default new Vuex.Store({
   },
 
   mutations: {
-    addSongs(state, response) {
+    storeSongs(state, response) {
       state.songs = response.data;
     },
     storeVoiceSource(state, voiceSource) {
@@ -233,11 +233,11 @@ export default new Vuex.Store({
   },
 
   actions: {
-    addSongs(context, response) {
+    storeSongs(context, response) {
       // 後で消す
       console.log(context);
       console.log(response);
-      context.commit("addSongs", response);
+      context.commit("storeSongs", response);
     },
     storeVoiceSource(context, voiceSource) {
       context.commit("storeVoiceSource", voiceSource);
