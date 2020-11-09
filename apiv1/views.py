@@ -1,6 +1,5 @@
 from rest_framework import views, status
 from rest_framework.response import Response
-from playsound import playsound
 
 from karaoke.models import Song
 from .serializers import SongSerializer
