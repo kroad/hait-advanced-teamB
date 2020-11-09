@@ -38,6 +38,7 @@
                 <audio id="player" controls :src="voiceSource"></audio>
               </v-col>
             </v-row>
+            <input type="file" @change="inputVoiceFile" />
           </v-container>
         </v-stepper-content>
       </v-stepper-items>
@@ -59,6 +60,7 @@ export default {
   data() {
     return {
       e1: 1,
+      voiceFile: null,
     };
   },
   computed: {
@@ -67,18 +69,23 @@ export default {
   methods: {
     // 後でapiだけを切り出す
     sendToSongApi() {
+      let formData = new FormData();
+      formData.append("voiceFile", this.voiceFile);
+      let config = {
+        headers: { "content-type": "multipart/form-data" },
+      };
       axios
-        .get("http://127.0.0.1:8000/api/v1/songs/", {
-          params: {
-            file: this.voiceSource,
-          },
-        })
+        .post("http://127.0.0.1:8000/api/v1/predict/", formData, config)
         .then((response) => {
           this.$store.dispatch("storeSongs", response);
         })
         .catch((error) => {
           console.log(error);
         });
+    },
+    inputVoiceFile(e) {
+      let files = e.target.files;
+      this.voiceFile = files[0];
     },
   },
 };
