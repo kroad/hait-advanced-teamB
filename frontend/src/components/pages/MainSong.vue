@@ -8,10 +8,10 @@
               <v-row>
                 <v-col>
                   <v-card-title class="headline">
-                    {{ songUrl }}
+                    {{ songOfSongUrl.title }}
                   </v-card-title>
                   <v-card-subtitle>
-                    {{ artistUrl }}
+                    {{ songOfSongUrl.artist_name }}
                   </v-card-subtitle>
                 </v-col>
               </v-row>

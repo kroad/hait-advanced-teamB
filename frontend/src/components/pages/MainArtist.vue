@@ -4,7 +4,7 @@
       <v-row>
         <v-col>
           <v-card dark>
-            <v-card-title>{{ artistUrl }}</v-card-title>
+            <v-card-title>{{ songsOfArtistUrl[0].artist_name }}</v-card-title>
             <v-card-text>
               あなたの音域で歌える曲だけを表示しています
             </v-card-text>
