@@ -22,9 +22,6 @@ export default {
           let chunks = [];
           recorder.addEventListener("dataavailable", (e) => {
             chunks.push(e.data);
-            // 後で消す
-            console.log(e);
-            console.log(chunks);
           });
           recorder.addEventListener("stop", () => {
             const blob = new Blob(chunks, { type: "audio/wav" });

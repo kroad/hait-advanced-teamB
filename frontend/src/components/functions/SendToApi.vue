@@ -60,7 +60,7 @@ export default {
   data() {
     return {
       e1: 1,
-      voiceFile: null,
+      voiceFile: undefined,
     };
   },
   computed: {

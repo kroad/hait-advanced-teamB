@@ -1,5 +1,6 @@
 from rest_framework import views, status
 from rest_framework.response import Response
+from playsound import playsound
 
 from karaoke.models import Song
 from .serializers import SongSerializer
@@ -13,6 +14,8 @@ class MLAPIView(views.APIView):
     def post(self, request, *args, **kwargs):
         file = self.request.data["voiceFile"]
         print(file)
+        print(file.size)
+        print(type(file))
         # model = pd.read_pickle()
         # result = model.predict(file)
         artists = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
