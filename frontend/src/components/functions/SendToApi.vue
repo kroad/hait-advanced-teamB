@@ -35,11 +35,11 @@
                 </v-btn>
               </v-col>
               <v-col>
-                <audio id="player" controls :src="voiceSource"></audio>
+                <audio id="player" controls :src="voiceURL"></audio>
               </v-col>
             </v-row>
-            <input type="file" @change="inputVoiceFile" />
           </v-container>
+          <input type="file" @change="inputVoiceFile" />
         </v-stepper-content>
       </v-stepper-items>
     </v-stepper>
@@ -64,7 +64,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["voiceSource", "myVoice"]),
+    ...mapGetters(["voiceURL", "myVoice"]),
   },
   methods: {
     // 後でapiだけを切り出す
@@ -80,6 +80,7 @@ export default {
           this.$store.dispatch("storeSongs", response);
         })
         .catch((error) => {
+          // 後でなんとかする
           console.log(error);
         });
     },

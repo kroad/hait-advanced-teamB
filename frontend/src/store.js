@@ -12,7 +12,7 @@ export default new Vuex.Store({
       z_highest: "",
       u_highest: "",
     },
-    voiceSource: "",
+    voiceURL: "",
     scale_jp: [
       "lowlowA",
       "lowlowA#",
@@ -217,7 +217,7 @@ export default new Vuex.Store({
       };
     },
     songs: (state) => state.songs,
-    voiceSource: (state) => state.voiceSource,
+    voiceURL: (state) => state.voiceURL,
     scale_jp: (state) => state.scale_jp,
     scale_uni: (state) => state.scale_uni,
     myVoice: (state) => state.myVoice,
@@ -227,20 +227,19 @@ export default new Vuex.Store({
     storeSongs(state, response) {
       state.songs = response.data;
     },
-    storeVoiceSource(state, voiceSource) {
-      state.voiceSource = voiceSource;
+    storeVoiceURL(state, voiceURL) {
+      state.voiceURL = voiceURL;
     },
   },
 
   actions: {
     storeSongs(context, response) {
       // 後で消す
-      console.log(context);
       console.log(response);
       context.commit("storeSongs", response);
     },
-    storeVoiceSource(context, voiceSource) {
-      context.commit("storeVoiceSource", voiceSource);
+    storeVoiceURL(context, voiceURL) {
+      context.commit("storeVoiceURL", voiceURL);
     },
   },
 });

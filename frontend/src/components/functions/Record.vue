@@ -29,7 +29,7 @@ export default {
           recorder.addEventListener("stop", () => {
             const blob = new Blob(chunks, { type: "audio/wav" });
             let voiceSource = window.URL.createObjectURL(blob);
-            this.$store.dispatch("storeVoiceSource", voiceSource);
+            this.$store.dispatch("storeVoiceURL", voiceSource);
             // 後で消す
             console.log(blob);
           });
