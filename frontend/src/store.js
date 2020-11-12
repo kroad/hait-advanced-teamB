@@ -12,7 +12,7 @@ export default new Vuex.Store({
       z_highest: "",
       u_highest: "",
     },
-    voiceURL: "",
+    wavBlob: "",
     scale_jp: [
       "lowlowA",
       "lowlowA#",
@@ -217,7 +217,7 @@ export default new Vuex.Store({
       };
     },
     songs: (state) => state.songs,
-    voiceURL: (state) => state.voiceURL,
+    wavBlob: (state) => state.wavBlob,
     scale_jp: (state) => state.scale_jp,
     scale_uni: (state) => state.scale_uni,
     myVoice: (state) => state.myVoice,
@@ -227,8 +227,8 @@ export default new Vuex.Store({
     storeSongs(state, response) {
       state.songs = response.data;
     },
-    storeVoiceURL(state, voiceURL) {
-      state.voiceURL = voiceURL;
+    storeWavBlob(state, wavBlob) {
+      state.wavBlob = wavBlob;
     },
   },
 
@@ -238,8 +238,8 @@ export default new Vuex.Store({
       console.log(response);
       context.commit("storeSongs", response);
     },
-    storeVoiceURL(context, voiceURL) {
-      context.commit("storeVoiceURL", voiceURL);
+    storeWavBlob(context, wavBlob) {
+      context.commit("storeWavBlob", wavBlob);
     },
   },
 });

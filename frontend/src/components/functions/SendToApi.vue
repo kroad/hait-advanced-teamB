@@ -35,7 +35,7 @@
                 </v-btn>
               </v-col>
               <v-col>
-                <audio id="player" controls :src="voiceURL"></audio>
+                <audio id="player" controls :src="wavBlob"></audio>
               </v-col>
             </v-row>
           </v-container>
@@ -64,7 +64,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["voiceURL", "myVoice"]),
+    ...mapGetters(["wavBlob", "myVoice"]),
   },
   methods: {
     // 後でapiだけを切り出す
