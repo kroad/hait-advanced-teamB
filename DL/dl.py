@@ -41,6 +41,41 @@ def predict(data_pass  : str):
     with open(file, 'rb') as f:
         return pickle.load(f, encoding='bytes')
   label_dict = unpickle('./label_dict_2.pkl')
+  label_dict = {'BUMP OF CHICKEN': 15,
+ 'DREAMS COME TRUE': 0,
+ 'ELLEGARDEN': 18,
+ 'KANA-BOON': 20,
+ 'LiSA': 4,
+ 'Mr.Children': 33,
+ 'Mrs.GREEN APPLE': 22,
+ 'ONE OK ROCK': 25,
+ 'Oasis': 34,
+ 'Official髭男dism_改訂版': 23,
+ 'RADWIMPS': 28,
+ 'SEKAI NO OWARI': 3,
+ 'Superfly': 7,
+ 'T.M.Revolution': 9,
+ 'UNISON SQUARE GARDEN': 10,
+ 'YUI': 12,
+ '[Alexandros]': 13,
+ 'back number': 29,
+ 'sumika': 6,
+ 'あいみょん': 30,
+ 'クリープハイプ': 11,
+ 'サザンオールスターズ': 17,
+ 'スピッツ': 5,
+ 'チャットモンチー': 8,
+ '宇多田ヒカル': 14,
+ '平井堅': 1,
+ '德永英明': 32,
+ '松任谷由実': 16,
+ '椎名林檎': 19,
+ '槇原敬之': 31,
+ '水樹奈々': 21,
+ '浜崎あゆみ': 24,
+ '米津玄師': 26,
+ '銀杏BOYZ': 27,
+ '長渕剛': 2}
 
   #modelのファイル名を入力
   #model_name = 'practice_0.h5'
