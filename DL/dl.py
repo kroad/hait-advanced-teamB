@@ -35,12 +35,13 @@ def predict(data_pass  : str):
     imgdata = np.reshape(imgdata, (1, 19, 512))
     return imgdata
   
-  def unpickle(file):
+  '''def unpickle(file):
     # 保存されたpickleファイルを読み込み
     # 'rb'は｢読み込み専用(r)｣かつ｢バイト列(b)｣を意味する (binaryの略かもしれない)
     with open(file, 'rb') as f:
         return pickle.load(f, encoding='bytes')
-  label_dict = unpickle('./label_dict_2.pkl')
+  label_dict = unpickle('./label_dict_2.pkl')'''
+  
   label_dict = {'BUMP OF CHICKEN': 15,
  'DREAMS COME TRUE': 0,
  'ELLEGARDEN': 18,
