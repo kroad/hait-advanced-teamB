@@ -1,9 +1,7 @@
 from rest_framework import views, status, generics
 from rest_framework.response import Response
 
-from rest_framework.parsers import FileUploadParser
-
-from karaoke.models import Song, Voice
+from karaoke.models import Song
 from .serializers import SongSerializer, VoiceSerializer
 
 from django.db.models import Q
@@ -16,7 +14,6 @@ from config import settings
 class MlAPIView(generics.ListCreateAPIView):
     """音声ファイルを機械学習に通すAPIクラス"""
 
-    # parser_class = (FileUploadParser,)
     serializer_class = SongSerializer
     queryset = Song.objects.all()
 
@@ -24,7 +21,6 @@ class MlAPIView(generics.ListCreateAPIView):
         voiceSerializer = VoiceSerializer(data=request.data)
         voiceSerializer.is_valid(raise_exception=True)
         voiceSerializer.save()
-        print(predict(settings.BASE_DIR + voiceSerializer.data["file"]))
         result = predict(settings.BASE_DIR + voiceSerializer.data["file"])
         artists = list(result.keys())
         quesryset = Song.objects.filter(
