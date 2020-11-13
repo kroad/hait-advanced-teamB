@@ -39,7 +39,7 @@
               </v-col>
             </v-row>
           </v-container>
-          <input type="file" @change="inputVoiceFile" />
+          <input type="file" accept="audio/wav" @change="inputVoiceFile" />
         </v-stepper-content>
       </v-stepper-items>
     </v-stepper>
@@ -70,12 +70,12 @@ export default {
     // 後でapiだけを切り出す
     sendToSongApi() {
       let formData = new FormData();
-      formData.append("voiceFile", this.voiceFile);
+      formData.append("file", this.voiceFile);
       let config = {
         headers: { "content-type": "multipart/form-data" },
       };
       axios
-        .post("http://127.0.0.1:8000/api/v1/predict/", formData, config)
+        .post("http://127.0.0.1:8000/api/v1/test/", formData, config)
         .then((response) => {
           this.$store.dispatch("storeSongs", response);
         })

@@ -1,6 +1,18 @@
 from django.db import models
 
 
+class Voice(models.Model):
+    """音声ファイル"""
+
+    class Meta:
+        db_table = "voice"
+
+    file = models.FileField(blank=False, null=False)
+
+    def __str__(self):
+        return self.file.name
+
+
 class Scale(models.Model):
     """音階"""
 

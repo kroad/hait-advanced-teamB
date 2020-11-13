@@ -58,7 +58,7 @@
                   <v-divider></v-divider>
                   <v-list-item
                     link
-                    v-for="song in singable"
+                    v-for="song in singableAsItIs"
                     :key="song.id"
                     router-link
                     :to="'/measure/result/' + artistUrl + '/' + song.title"
@@ -134,7 +134,7 @@
                   <v-divider></v-divider>
                   <v-list-item
                     link
-                    v-for="song in unsigable"
+                    v-for="song in unsingable"
                     :key="song.id"
                     router-link
                     :to="'/measure/result/' + artistUrl + '/' + song.title"
@@ -194,17 +194,17 @@ export default {
       }
       return songsOfArtistUrl;
     },
-    singable() {
-      let singable = [];
+    singableAsItIs() {
+      let singableAsItIs = [];
       for (let song of this.songsOfArtistUrl) {
         if (
           song.z_lowest_id >= this.myVoiceIndex.z_lowest &&
           song.z_highest_id <= this.myVoiceIndex.z_highest
         ) {
-          singable.push(song);
+          singableAsItIs.push(song);
         }
       }
-      return singable;
+      return singableAsItIs;
     },
     singableWithKeyChange() {
       let singableWithKeyChange = [];
@@ -218,21 +218,17 @@ export default {
       }
       // singableに含まれているものは除く
       singableWithKeyChange = singableWithKeyChange.filter(
-        (i) => this.singable.indexOf(i) == -1
+        (i) => this.singableAsItIs.indexOf(i) == -1
       );
       return singableWithKeyChange;
     },
-    unsigable() {
-      let unsigable = [];
-      let myVoiceRange =
-        this.myVoiceIndex.z_highest - this.myVoiceIndex.z_lowest;
-      for (let song of this.songsOfArtistUrl) {
-        let songVoiceRange = song.z_highest_id - song.z_lowest_id;
-        if (myVoiceRange < songVoiceRange) {
-          unsigable.push(song);
-        }
-      }
-      return unsigable;
+    unsingable() {
+      let unsingable = [];
+      let singable = this.singableAsItIs.concat(this.singableWithKeyChange);
+      unsingable = this.songsOfArtistUrl.filter(
+        (i) => singable.indexOf(i) == -1
+      );
+      return unsingable;
     },
     myVoiceRange() {
       return this.myVoiceIndex.z_highest - this.myVoiceIndex.z_lowest;

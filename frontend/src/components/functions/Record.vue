@@ -28,7 +28,7 @@ export default {
       let saveAudio = function () {
         let wavBlob = exportWAV(audioData);
         downloadButton.href = wavBlob;
-        downloadButton.download = wavBlob;
+        downloadButton.download = "test.wav";
         downloadButton.click();
         audioContext.close();
       };
