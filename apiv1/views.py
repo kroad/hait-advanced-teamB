@@ -13,12 +13,12 @@ import os
 from config import settings
 
 
-class TestAPIView(generics.ListCreateAPIView):
-    """test用"""
+class MlAPIView(generics.ListCreateAPIView):
+    """音声ファイルを機械学習に通すAPIクラス"""
 
     # parser_class = (FileUploadParser,)
-    serializer_class = VoiceSerializer
-    queryset = Voice.objects.all()
+    serializer_class = SongSerializer
+    queryset = Song.objects.all()
 
     def create(self, request):
         voiceSerializer = VoiceSerializer(data=request.data)
@@ -37,36 +37,3 @@ class TestAPIView(generics.ListCreateAPIView):
         songSerializer = SongSerializer(instance=quesryset, many=True)
 
         return Response(songSerializer.data, status=status.HTTP_201_CREATED)
-
-
-class MLAPIView(views.APIView):
-    """"音声ファイルを機械学習に通すAPIクラス"""
-
-    def get(self, *args, **kwargs):
-        serializer = SongSerializer(instance=Song.objects.all(), many=True)
-        return Response(serializer.data, status.HTTP_200_OK)
-
-    def post(self, request, *args, **kwargs):
-        file = self.request.data["voiceFile"]
-        print(request)
-        print(request.data)
-        print(request.FILES)
-        print(file)
-        print(file)
-        # model = pd.read_pickle()
-        # result = model.predict(file)
-        artists = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-        quesryset = Song.objects.filter(
-            Q(artist=artists[0])
-            | Q(artist=artists[1])
-            | Q(artist=artists[2])
-            | Q(artist=artists[3])
-            | Q(artist=artists[4])
-            | Q(artist=artists[5])
-            | Q(artist=artists[6])
-            | Q(artist=artists[7])
-            | Q(artist=artists[8])
-            | Q(artist=artists[9])
-        )
-        serializer = SongSerializer(instance=quesryset, many=True)
-        return Response(serializer.data, status.HTTP_200_OK)

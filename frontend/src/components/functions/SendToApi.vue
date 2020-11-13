@@ -74,7 +74,7 @@ export default {
         headers: { "content-type": "multipart/form-data" },
       };
       axios
-        .post("http://127.0.0.1:8000/api/v1/test/", formData, config)
+        .post("http://127.0.0.1:8000/api/v1/predict/", formData, config)
         .then((response) => {
           this.$store.dispatch("storeSongs", response);
         })

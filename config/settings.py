@@ -132,3 +132,9 @@ CORS_ORIGIN_WHITELIST = ("http://localhost:8080", "http://127.0.0.1:8000")
 # ファイルの保存場所
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+# DRFの設定
+REST_FRAMEWORK = {
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 100,
+}
