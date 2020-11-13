@@ -34,12 +34,10 @@
                   結果を表示
                 </v-btn>
               </v-col>
-              <v-col>
-                <audio id="player" controls :src="wavBlob"></audio>
-              </v-col>
             </v-row>
           </v-container>
           <input type="file" accept="audio/wav" @change="inputVoiceFile" />
+          <audio id="player" controls :src="voiceSourceBlob"></audio>
         </v-stepper-content>
       </v-stepper-items>
     </v-stepper>
@@ -60,11 +58,12 @@ export default {
   data() {
     return {
       e1: 1,
-      voiceFile: undefined,
+      voiceFile: null,
+      voiceSourceBlob: "",
     };
   },
   computed: {
-    ...mapGetters(["wavBlob", "myVoice"]),
+    ...mapGetters(["myVoice"]),
   },
   methods: {
     // 後でapiだけを切り出す
@@ -87,6 +86,7 @@ export default {
     inputVoiceFile(e) {
       let files = e.target.files;
       this.voiceFile = files[0];
+      this.voiceSourceBlob = window.URL.createObjectURL(this.voiceFile);
     },
   },
 };

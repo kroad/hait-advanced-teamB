@@ -12,7 +12,6 @@ export default new Vuex.Store({
       z_highest: "",
       u_highest: "",
     },
-    wavBlob: "",
     scale_jp: [
       "lowlowA",
       "lowlowA#",
