@@ -9,11 +9,6 @@
 
 <script>
 export default {
-  data() {
-    return {
-      source: "",
-    };
-  },
   methods: {
     record() {
       // for html
@@ -27,15 +22,13 @@ export default {
       // audio data
       let audioData = [];
       let bufferSize = 1024;
-      let vm = this;
 
       // export関数にaudioData(リスト型)を渡して出来たwavファイルをダウンロードボタンのhrefに追加し、ダウンロード属性をtest.wavにし、勝手にクリックして自動ダウンロード
       // オーディオコンテキストを閉じて使っていたシステムのオーディオリソースを全て解放する
       let saveAudio = function () {
         let wavBlob = exportWAV(audioData);
         downloadButton.href = wavBlob;
-        vm.$store.dispatch("storeWavBlob", wavBlob);
-        downloadButton.download = "test.wav";
+        downloadButton.download = wavBlob;
         downloadButton.click();
         audioContext.close();
       };
@@ -129,7 +122,7 @@ export default {
         // when time passed without pushing the stop button
         // 5秒で終わり
         setTimeout(function () {
-          console.log("10 sec");
+          console.log("5 sec");
           saveAudio();
           console.log("saved audio");
         }, 5000);

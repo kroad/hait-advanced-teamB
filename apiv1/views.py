@@ -12,9 +12,11 @@ class MLAPIView(views.APIView):
 
     def post(self, request, *args, **kwargs):
         file = self.request.data["voiceFile"]
+        print(request)
+        print(request.data)
+        print(request.FILES)
         print(file)
-        print(file.size)
-        print(type(file))
+        print(file)
         # model = pd.read_pickle()
         # result = model.predict(file)
         artists = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
