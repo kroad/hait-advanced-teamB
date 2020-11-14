@@ -1,30 +1,34 @@
-from rest_framework import generics
+from rest_framework import status, generics
+from rest_framework.response import Response
 
-from karaoke.models import Song, Scale
-from .serializers import SongSerializer
+from karaoke.models import Song, Voice
+from .serializers import SongSerializer, VoiceSerializer
 
 from django.db.models import Q
 
-# 汎用クラスViewを使ったやつ
-class SongListAPIView(generics.ListAPIView):
-    """曲モデルの取得APIクラス"""
+from .machine_learning.predict import predict
+from config import settings
 
-    serializer_class = SongSerializer
 
-    def get_queryset(self):
-        # model = pd.read_pickle()
-        # result = model.predict()
-        artists = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+class MlAPIView(generics.ListCreateAPIView):
+    """音声ファイルを機械学習に通すAPIクラス"""
 
-        return Song.objects.filter(
-            Q(artist=artists[0])
-            | Q(artist=artists[1])
-            | Q(artist=artists[2])
-            | Q(artist=artists[3])
-            | Q(artist=artists[4])
-            | Q(artist=artists[5])
-            | Q(artist=artists[6])
-            | Q(artist=artists[7])
-            | Q(artist=artists[8])
-            | Q(artist=artists[9])
+    serializer_class = VoiceSerializer
+    queryset = Voice.objects.all()
+
+    def create(self, request):
+        voiceSerializer = VoiceSerializer(data=request.data)
+        voiceSerializer.is_valid(raise_exception=True)
+        voiceSerializer.save()
+        result = predict(settings.BASE_DIR + voiceSerializer.data["file"])
+        artists = [i["artist"] for i in result]
+        quesryset = Song.objects.filter(
+            Q(artist__name=artists[0])
+            | Q(artist__name=artists[1])
+            | Q(artist__name=artists[2])
+            | Q(artist__name=artists[3])
+            | Q(artist__name=artists[4])
         )
+        songSerializer = SongSerializer(instance=quesryset, many=True)
+        response = [result, songSerializer.data]
+        return Response(response, status=status.HTTP_201_CREATED)

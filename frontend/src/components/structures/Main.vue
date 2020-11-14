@@ -10,7 +10,7 @@ export default {};
 
 <style scoped>
 div {
-  background-color: orange;
+  background-color: #BBDEFB;
   height: 100%;
 }
 </style>

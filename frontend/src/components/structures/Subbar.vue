@@ -1,6 +1,8 @@
 <template>
   <div>
-    <SubbarResult />
+    <template>
+      <SubbarResult />
+    </template>
   </div>
 </template>
 
@@ -14,7 +16,7 @@ export default {
 </script>
 <style scoped>
 div {
-  background-color: gray;
+  background-color: #9E9E9E;
   height: 100%;
   width: 50px;
   transition: width 0.2s;

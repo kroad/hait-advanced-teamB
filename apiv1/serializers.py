@@ -1,6 +1,12 @@
 from rest_framework import serializers
 
-from karaoke.models import Song
+from karaoke.models import Song, Voice
+
+
+class VoiceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Voice
+        fields = "__all__"
 
 
 class SongSerializer(serializers.ModelSerializer):
