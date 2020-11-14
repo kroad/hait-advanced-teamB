@@ -76,7 +76,10 @@ export default {
       axios
         .post("http://127.0.0.1:8000/api/v1/predict/", formData, config)
         .then((response) => {
+          // 後で消す
+          console.log(response);
           this.$store.dispatch("storeSongs", response);
+          this.$store.dispatch("storeProbAndArtists", response);
         })
         .catch((error) => {
           // 後でなんとかする

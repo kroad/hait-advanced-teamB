@@ -21,17 +21,13 @@
               </v-list-item>
               <v-list-item two-line>
                 <v-list-item-content>
-                  <v-list-item-title>{{
-                    myVoice.z_highest
-                  }}</v-list-item-title>
+                  <v-list-item-title>{{ myVoice.z_highest }}</v-list-item-title>
                   <v-list-item-subtitle>地声最高音</v-list-item-subtitle>
                 </v-list-item-content>
               </v-list-item>
               <v-list-item two-line>
                 <v-list-item-content>
-                  <v-list-item-title>{{
-                    myVoice.u_highest
-                  }}</v-list-item-title>
+                  <v-list-item-title>{{ myVoice.u_highest }}</v-list-item-title>
                   <v-list-item-subtitle>裏声最高音</v-list-item-subtitle>
                 </v-list-item-content>
               </v-list-item>
@@ -53,15 +49,15 @@
               </v-list-item>
               <v-divider></v-divider>
               <v-list-item
-                v-for="artist in artists"
-                :key="artist"
+                v-for="item in prob_and_artists"
+                :key="item.artist"
                 link
-                :to="'/measure/result/' + artist"
+                :to="'/measure/result/' + item.artist"
               >
                 <v-list-item-content>
-                  {{ artist }}
+                  {{ item.artist }}
                 </v-list-item-content>
-                <v-list-item-content> 50 </v-list-item-content>
+                <v-list-item-content> {{ item.prob }} </v-list-item-content>
               </v-list-item>
             </v-list>
           </v-card>
@@ -76,7 +72,7 @@ import { mapGetters } from "vuex";
 
 export default {
   computed: {
-    ...mapGetters(["artists", "songs", "myVoice"]),
+    ...mapGetters(["songs", "prob_and_artists", "myVoice"]),
   },
 };
 </script>

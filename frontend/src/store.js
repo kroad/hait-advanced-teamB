@@ -7,6 +7,7 @@ export default new Vuex.Store({
   // グローバル変数みたいなもの
   state: {
     songs: [],
+    prob_and_artists: [],
     myVoice: {
       z_lowest: "",
       z_highest: "",
@@ -196,15 +197,6 @@ export default new Vuex.Store({
 
   // 算出プロパティみたいなもの
   getters: {
-    artists: function(state) {
-      let artists = [];
-      for (let song of state.songs) {
-        if (!artists.includes(song.artist_name)) {
-          artists.push(song.artist_name);
-        }
-      }
-      return artists;
-    },
     myVoiceIndex: (state) => {
       let z_lowest = state.scale_jp.indexOf(state.myVoice.z_lowest) + 1;
       let z_highest = state.scale_jp.indexOf(state.myVoice.z_highest) + 1;
@@ -216,7 +208,7 @@ export default new Vuex.Store({
       };
     },
     songs: (state) => state.songs,
-    wavBlob: (state) => state.wavBlob,
+    prob_and_artists: (state) => state.prob_and_artists,
     scale_jp: (state) => state.scale_jp,
     scale_uni: (state) => state.scale_uni,
     myVoice: (state) => state.myVoice,
@@ -224,21 +216,19 @@ export default new Vuex.Store({
 
   mutations: {
     storeSongs(state, response) {
-      state.songs = response.data;
+      state.songs = response.data[1];
     },
-    storeWavBlob(state, wavBlob) {
-      state.wavBlob = wavBlob;
+    storeProbAndArtists(state, response) {
+      state.prob_and_artists = response.data[0];
     },
   },
 
   actions: {
     storeSongs(context, response) {
-      // 後で消す
-      console.log(response);
       context.commit("storeSongs", response);
     },
-    storeWavBlob(context, wavBlob) {
-      context.commit("storeWavBlob", wavBlob);
+    storeProbAndArtists(context, response) {
+      context.commit("storeProbAndArtists", response);
     },
   },
 });

@@ -89,18 +89,18 @@ def predict(data_pass: str):
     model = load_model(model_path)
 
     # mfcc変換、標準化、サイズ変換
-    mfcc_data = get_mfcc(data_pass)  # 仮　ここに音声データのパスを入れてください
+    mfcc_data = get_mfcc(data_pass)  # 仮 ここに音声データのパスを入れてください
     normalized_data = normalize(mfcc_data)
     resized_data = resize(normalized_data)
 
     # 予測
     out = model.predict(resized_data)
 
-    # 辞書を作る
-    return_data = {}
+    # リストを作る
+    result = []
     for i in np.argsort(-(out.flatten()))[:5]:
         for k, v in label_dict.items():
             if v == i:
-                return_data[k] = math.floor(out.flatten()[i] * 100)
+                result.append({"artist": k, "prob": math.floor(out.flatten()[i] * 100)})
 
-    return return_data
+    return result

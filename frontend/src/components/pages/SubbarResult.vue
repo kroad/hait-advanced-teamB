@@ -7,17 +7,17 @@
         </v-list-item-content>
       </v-list-item>
       <v-list-item
-        v-for="(artist, index) in artists"
-        :key="artist"
+        v-for="(item, index) in prob_and_artists"
+        :key="item.artist"
         link
         router-link
-        :to="'/measure/result/' + artist"
+        :to="'/measure/result/' + item.artist"
       >
         <v-list-item-icon>
           <v-icon>{{ index + 1 }}</v-icon>
         </v-list-item-icon>
         <v-list-item-content>
-          <v-list-item-title>{{ artist }}</v-list-item-title>
+          <v-list-item-title>{{ item.artist }}</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
     </v-list>
@@ -29,7 +29,7 @@ import { mapGetters } from "vuex";
 
 export default {
   computed: {
-    ...mapGetters(["artists"]),
+    ...mapGetters(["prob_and_artists"]),
   },
 };
 </script>

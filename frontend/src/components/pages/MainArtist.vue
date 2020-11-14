@@ -216,7 +216,7 @@ export default {
           singableWithKeyChange.push(song);
         }
       }
-      // singableに含まれているものは除く
+      // singableAsItIsに含まれているものは除く
       singableWithKeyChange = singableWithKeyChange.filter(
         (i) => this.singableAsItIs.indexOf(i) == -1
       );
@@ -225,6 +225,7 @@ export default {
     unsingable() {
       let unsingable = [];
       let singable = this.singableAsItIs.concat(this.singableWithKeyChange);
+      // singable以外の曲
       unsingable = this.songsOfArtistUrl.filter(
         (i) => singable.indexOf(i) == -1
       );
