@@ -105,32 +105,11 @@
                     <v-list-item-content>
                       {{ song.title }}
                     </v-list-item-content>
-                    <!-- 符号と値が同じかどうかで条件分岐 -->
-                    <v-list-item-content
-                      v-if="
-                        song.keyToChange.low === song.keyToChange.high &&
-                        song.keyToChange.posiNega === 1
-                      "
-                    >
-                      +{{ song.keyToChange.low }}
+
+                    <v-list-item-content>
+                      {{ song.keyToChange }}
                     </v-list-item-content>
-                    <v-list-item-content
-                      v-else-if="
-                        song.keyToChange.low === song.keyToChange.high &&
-                        song.keyToChange.posiNega === -1
-                      "
-                    >
-                      {{ song.keyToChange.low }}
-                    </v-list-item-content>
-                    <v-list-item-content
-                      v-else-if="song.keyToChange.posiNega === 1"
-                    >
-                      +{{ song.keyToChange.low }} ~ +{{ song.keyToChange.high }}
-                    </v-list-item-content>
-                    <v-list-item-content v-else>
-                      {{ song.keyToChange.low }} ~ {{ song.keyToChange.high }}
-                    </v-list-item-content>
-                    <!--  -->
+
                     <v-list-item-content>
                       {{ song.z_lowest_japan }}
                     </v-list-item-content>
@@ -197,9 +176,6 @@
         </v-col>
       </v-row>
     </v-container>
-    <p>{{ myVoiceIndex }}</p>
-    <p>{{ songVoiceRange }}</p>
-    <p>{{ singableWithKeyChange }}</p>
   </div>
 </template>
 <script>
@@ -257,8 +233,15 @@ export default {
         let high = this.myVoiceIndex.z_highest - song.z_highest_id;
         let low = this.myVoiceIndex.z_lowest - song.z_lowest_id;
         let posiNega = Math.sign(high);
-        let keyToChange = { high: high, low: low, posiNega: posiNega };
-        song.keyToChange = keyToChange;
+        if (high === low && posiNega === 1) {
+          song.keyToChange = "+" + high;
+        } else if (high === low && posiNega === -1) {
+          song.keyToChange = high;
+        } else if (posiNega === 1) {
+          song.keyToChange = "+" + low + " ~ +" + high;
+        } else {
+          song.keyToChange = low + " ~ " + high;
+        }
         singableWithKeyChange.push(song);
       }
       return singableWithKeyChange;
