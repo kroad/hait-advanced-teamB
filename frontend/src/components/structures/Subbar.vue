@@ -1,6 +1,8 @@
 <template>
   <div>
-    <SubbarResult />
+    <template>
+      <SubbarResult />
+    </template>
   </div>
 </template>
 

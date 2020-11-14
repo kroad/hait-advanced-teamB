@@ -3,14 +3,14 @@
     <v-container>
       <v-row>
         <v-col>
-          <v-card dark>
+          <v-card>
             <v-card-title>測定結果</v-card-title>
           </v-card>
         </v-col>
       </v-row>
       <v-row>
         <v-col cols="12">
-          <v-card dark>
+          <v-card>
             <v-card-title> あなたの音域 </v-card-title>
             <v-list>
               <v-list-item two-line>
@@ -38,7 +38,7 @@
       <v-row>
         <v-col>
           <v-card>
-            <v-list dark>
+            <v-list>
               <v-list-item>
                 <v-list-item-content>
                   <v-list-item-title> アーティスト名 </v-list-item-title>

@@ -3,7 +3,7 @@
     <v-container>
       <v-row>
         <v-col>
-          <v-card dark>
+          <v-card>
             <v-card-title>{{ songsOfArtistUrl[0].artist_name }}</v-card-title>
             <v-card-text>
               あなたの音域で歌える曲だけを表示しています
@@ -13,7 +13,7 @@
       </v-row>
       <v-row>
         <v-col cols="12">
-          <v-card dark>
+          <v-card>
             <v-card-title> あなたの音域 </v-card-title>
             <v-list>
               <v-list-item two-line>
@@ -38,14 +38,14 @@
       </v-row>
       <v-row>
         <v-col cols="12">
-          <v-card dark>
-            <v-tabs v-model="tab" class="elevation-2" dark>
+          <v-card>
+            <v-tabs v-model="tab" class="elevation-2">
               <v-tabs-slider></v-tabs-slider>
               <v-tab v-for="i in tabs" :key="i" :href="`#tab-${i}`">
                 {{ i }}
               </v-tab>
             </v-tabs>
-            <v-tabs-items v-model="tab" dark>
+            <v-tabs-items v-model="tab">
               <v-tab-item value="tab-音域内の曲">
                 <v-list>
                   <v-list-item>
@@ -88,6 +88,7 @@
                 <v-list>
                   <v-list-item>
                     <v-list-item-content> 曲名 </v-list-item-content>
+                    <v-list-item-content> 変更すべきキー </v-list-item-content>
                     <v-list-item-content> 地声最低音 </v-list-item-content>
                     <v-list-item-content> 地声最高音 </v-list-item-content>
                     <v-list-item-content> 裏声最低音 </v-list-item-content>
@@ -104,6 +105,32 @@
                     <v-list-item-content>
                       {{ song.title }}
                     </v-list-item-content>
+                    <!-- 符号と値が同じかどうかで条件分岐 -->
+                    <v-list-item-content
+                      v-if="
+                        song.keyToChange.low === song.keyToChange.high &&
+                        song.keyToChange.posiNega === 1
+                      "
+                    >
+                      +{{ song.keyToChange.low }}
+                    </v-list-item-content>
+                    <v-list-item-content
+                      v-else-if="
+                        song.keyToChange.low === song.keyToChange.high &&
+                        song.keyToChange.posiNega === -1
+                      "
+                    >
+                      {{ song.keyToChange.low }}
+                    </v-list-item-content>
+                    <v-list-item-content
+                      v-else-if="song.keyToChange.posiNega === 1"
+                    >
+                      +{{ song.keyToChange.low }} ~ +{{ song.keyToChange.high }}
+                    </v-list-item-content>
+                    <v-list-item-content v-else>
+                      {{ song.keyToChange.low }} ~ {{ song.keyToChange.high }}
+                    </v-list-item-content>
+                    <!--  -->
                     <v-list-item-content>
                       {{ song.z_lowest_japan }}
                     </v-list-item-content>
@@ -170,6 +197,9 @@
         </v-col>
       </v-row>
     </v-container>
+    <p>{{ myVoiceIndex }}</p>
+    <p>{{ songVoiceRange }}</p>
+    <p>{{ singableWithKeyChange }}</p>
   </div>
 </template>
 <script>
@@ -207,19 +237,30 @@ export default {
       return singableAsItIs;
     },
     singableWithKeyChange() {
-      let singableWithKeyChange = [];
+      let singable = [];
       let myVoiceRange =
         this.myVoiceIndex.z_highest - this.myVoiceIndex.z_lowest;
       for (let song of this.songsOfArtistUrl) {
         let songVoiceRange = song.z_highest_id - song.z_lowest_id;
-        if (myVoiceRange >= songVoiceRange) {
-          singableWithKeyChange.push(song);
+        if (
+          (myVoiceRange >= songVoiceRange &&
+            song.z_lowest_id < this.myVoiceIndex.z_lowest) ||
+          (myVoiceRange >= songVoiceRange &&
+            song.z_highest_id > this.myVoiceIndex.z_highest)
+        ) {
+          singable.push(song);
         }
       }
-      // singableAsItIsに含まれているものは除く
-      singableWithKeyChange = singableWithKeyChange.filter(
-        (i) => this.singableAsItIs.indexOf(i) == -1
-      );
+      // 変更すべきキーも追加
+      let singableWithKeyChange = [];
+      for (let song of singable) {
+        let high = this.myVoiceIndex.z_highest - song.z_highest_id;
+        let low = this.myVoiceIndex.z_lowest - song.z_lowest_id;
+        let posiNega = Math.sign(high);
+        let keyToChange = { high: high, low: low, posiNega: posiNega };
+        song.keyToChange = keyToChange;
+        singableWithKeyChange.push(song);
+      }
       return singableWithKeyChange;
     },
     unsingable() {
@@ -231,6 +272,7 @@ export default {
       );
       return unsingable;
     },
+    // 後で消す
     myVoiceRange() {
       return this.myVoiceIndex.z_highest - this.myVoiceIndex.z_lowest;
     },
