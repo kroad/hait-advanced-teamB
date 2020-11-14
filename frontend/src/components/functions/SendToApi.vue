@@ -19,10 +19,22 @@
 
       <v-stepper-items>
         <v-stepper-content step="2">
-          <v-card class="mb-12" color="grey lighten-1">
-            <Record />
-          </v-card>
           <v-container>
+            <v-row>
+              <v-col>
+                <Record />
+              </v-col>
+            </v-row>
+            <v-row>
+              <v-col>
+                <input
+                  type="file"
+                  accept="audio/wav"
+                  @change="inputVoiceFile"
+                />
+                <audio id="player" controls :src="voiceSourceBlob"></audio>
+              </v-col>
+            </v-row>
             <v-row>
               <v-col>
                 <v-btn @click="e1 = 1" class="mr-4">戻る</v-btn>
@@ -36,8 +48,6 @@
               </v-col>
             </v-row>
           </v-container>
-          <input type="file" accept="audio/wav" @change="inputVoiceFile" />
-          <audio id="player" controls :src="voiceSourceBlob"></audio>
         </v-stepper-content>
       </v-stepper-items>
     </v-stepper>

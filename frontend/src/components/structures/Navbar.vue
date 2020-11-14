@@ -1,6 +1,6 @@
 <template>
   <div class="sidebar_component">
-    <v-list color="primary" dark>
+    <v-list color="grey darken-4" dark>
       <v-list-item two-line link to="/">
         <v-list-item-icon>
           <v-icon>mdi-music-circle</v-icon>
@@ -55,7 +55,7 @@ export default {
 </script>
 <style scoped>
 .sidebar_component {
-  background-color: purple;
+  background-color: #212121;
   height: 100%;
   width: 60px;
   transition: width 0.2s;
