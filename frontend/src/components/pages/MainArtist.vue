@@ -255,18 +255,6 @@ export default {
       );
       return unsingable;
     },
-    // 後で消す
-    myVoiceRange() {
-      return this.myVoiceIndex.z_highest - this.myVoiceIndex.z_lowest;
-    },
-    songVoiceRange() {
-      let songVoiceRange = [];
-      for (let song of this.songsOfArtistUrl) {
-        let voiceRange = song.z_highest_id - song.z_lowest_id;
-        songVoiceRange.push(voiceRange);
-      }
-      return songVoiceRange;
-    },
   },
 };
 </script>
