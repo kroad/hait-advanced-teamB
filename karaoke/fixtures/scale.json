@@ -1,0 +1,706 @@
+[
+  {
+    "model": "karaoke.scale",
+    "pk": "1",
+    "fields": {
+      "japan": "lowlowA",
+      "universal": "A0"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "2",
+    "fields": {
+      "japan": "lowlowA#",
+      "universal": "A#0"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "3",
+    "fields": {
+      "japan": "lowlowB",
+      "universal": "B0"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "4",
+    "fields": {
+      "japan": "lowlowC",
+      "universal": "C1"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "5",
+    "fields": {
+      "japan": "lowlowC#",
+      "universal": "C#1"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "6",
+    "fields": {
+      "japan": "lowlowD",
+      "universal": "D1"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "7",
+    "fields": {
+      "japan": "lowlowD#",
+      "universal": "D#1"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "8",
+    "fields": {
+      "japan": "lowlowE",
+      "universal": "E1"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "9",
+    "fields": {
+      "japan": "lowlowF",
+      "universal": "F1"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "10",
+    "fields": {
+      "japan": "lowlowF#",
+      "universal": "F#1"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "11",
+    "fields": {
+      "japan": "lowlowG",
+      "universal": "G1"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "12",
+    "fields": {
+      "japan": "lowlowG#",
+      "universal": "G#1"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "13",
+    "fields": {
+      "japan": "lowA",
+      "universal": "A1"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "14",
+    "fields": {
+      "japan": "lowA#",
+      "universal": "A#1"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "15",
+    "fields": {
+      "japan": "lowB",
+      "universal": "B1"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "16",
+    "fields": {
+      "japan": "lowC",
+      "universal": "C2"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "17",
+    "fields": {
+      "japan": "lowC#",
+      "universal": "C#2"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "18",
+    "fields": {
+      "japan": "lowD",
+      "universal": "D2"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "19",
+    "fields": {
+      "japan": "lowD#",
+      "universal": "D#2"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "20",
+    "fields": {
+      "japan": "lowE",
+      "universal": "E2"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "21",
+    "fields": {
+      "japan": "lowF",
+      "universal": "F2"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "22",
+    "fields": {
+      "japan": "lowF#",
+      "universal": "F#2"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "23",
+    "fields": {
+      "japan": "lowG",
+      "universal": "G2"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "24",
+    "fields": {
+      "japan": "lowG#",
+      "universal": "G#2"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "25",
+    "fields": {
+      "japan": "mid1A",
+      "universal": "A2"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "26",
+    "fields": {
+      "japan": "mid1A#",
+      "universal": "A#2"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "27",
+    "fields": {
+      "japan": "mid1B",
+      "universal": "B2"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "28",
+    "fields": {
+      "japan": "mid1C",
+      "universal": "C3"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "29",
+    "fields": {
+      "japan": "mid1C#",
+      "universal": "C#3"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "30",
+    "fields": {
+      "japan": "mid1D",
+      "universal": "D3"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "31",
+    "fields": {
+      "japan": "mid1D#",
+      "universal": "D#3"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "32",
+    "fields": {
+      "japan": "mid1E",
+      "universal": "E3"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "33",
+    "fields": {
+      "japan": "mid1F",
+      "universal": "F3"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "34",
+    "fields": {
+      "japan": "mid1F#",
+      "universal": "F#3"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "35",
+    "fields": {
+      "japan": "mid1G",
+      "universal": "G3"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "36",
+    "fields": {
+      "japan": "mid1G#",
+      "universal": "G#3"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "37",
+    "fields": {
+      "japan": "mid2A",
+      "universal": "A3"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "38",
+    "fields": {
+      "japan": "mid2A#",
+      "universal": "A#3"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "39",
+    "fields": {
+      "japan": "mid2B",
+      "universal": "B3"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "40",
+    "fields": {
+      "japan": "mid2C",
+      "universal": "C4"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "41",
+    "fields": {
+      "japan": "mid2C#",
+      "universal": "C#4"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "42",
+    "fields": {
+      "japan": "mid2D",
+      "universal": "D4"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "43",
+    "fields": {
+      "japan": "mid2D#",
+      "universal": "D#4"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "44",
+    "fields": {
+      "japan": "mid2E",
+      "universal": "E4"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "45",
+    "fields": {
+      "japan": "mid2F",
+      "universal": "F4"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "46",
+    "fields": {
+      "japan": "mid2F#",
+      "universal": "F#4"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "47",
+    "fields": {
+      "japan": "mid2G",
+      "universal": "G4"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "48",
+    "fields": {
+      "japan": "mid2G#",
+      "universal": "G#4"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "49",
+    "fields": {
+      "japan": "hiA",
+      "universal": "A4"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "50",
+    "fields": {
+      "japan": "hiA#",
+      "universal": "A#4"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "51",
+    "fields": {
+      "japan": "hiB",
+      "universal": "B4"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "52",
+    "fields": {
+      "japan": "hiC",
+      "universal": "C5"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "53",
+    "fields": {
+      "japan": "hiC#",
+      "universal": "C#5"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "54",
+    "fields": {
+      "japan": "hiD",
+      "universal": "D5"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "55",
+    "fields": {
+      "japan": "hiD#",
+      "universal": "D#5"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "56",
+    "fields": {
+      "japan": "hiE",
+      "universal": "E5"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "57",
+    "fields": {
+      "japan": "hiF",
+      "universal": "F5"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "58",
+    "fields": {
+      "japan": "hiF#",
+      "universal": "F#5"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "59",
+    "fields": {
+      "japan": "hiG",
+      "universal": "G5"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "60",
+    "fields": {
+      "japan": "hiG#",
+      "universal": "G#5"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "61",
+    "fields": {
+      "japan": "hihiA",
+      "universal": "A5"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "62",
+    "fields": {
+      "japan": "hihiA#",
+      "universal": "A#5"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "63",
+    "fields": {
+      "japan": "hihiB",
+      "universal": "B5"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "64",
+    "fields": {
+      "japan": "hihiC",
+      "universal": "C6"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "65",
+    "fields": {
+      "japan": "hihiC#",
+      "universal": "C#6"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "66",
+    "fields": {
+      "japan": "hihiD",
+      "universal": "D6"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "67",
+    "fields": {
+      "japan": "hihiD#",
+      "universal": "D#6"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "68",
+    "fields": {
+      "japan": "hihiE",
+      "universal": "E6"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "69",
+    "fields": {
+      "japan": "hihiF",
+      "universal": "F6"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "70",
+    "fields": {
+      "japan": "hihiF#",
+      "universal": "F#6"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "71",
+    "fields": {
+      "japan": "hihiG",
+      "universal": "G6"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "72",
+    "fields": {
+      "japan": "hihiG#",
+      "universal": "G#6"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "73",
+    "fields": {
+      "japan": "hihihiA",
+      "universal": "A6"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "74",
+    "fields": {
+      "japan": "hihihiA#",
+      "universal": "A#6"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "75",
+    "fields": {
+      "japan": "hihihiB",
+      "universal": "B6"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "76",
+    "fields": {
+      "japan": "hihihiC",
+      "universal": "C7"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "77",
+    "fields": {
+      "japan": "hihihiC#",
+      "universal": "C#7"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "78",
+    "fields": {
+      "japan": "hihihiD",
+      "universal": "D7"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "79",
+    "fields": {
+      "japan": "hihihiD#",
+      "universal": "D#7"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "80",
+    "fields": {
+      "japan": "hihihiE",
+      "universal": "E7"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "81",
+    "fields": {
+      "japan": "hihihiF",
+      "universal": "F7"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "82",
+    "fields": {
+      "japan": "hihihiF#",
+      "universal": "F#7"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "83",
+    "fields": {
+      "japan": "hihihiG",
+      "universal": "G7"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "84",
+    "fields": {
+      "japan": "hihihiG#",
+      "universal": "G#7"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "85",
+    "fields": {
+      "japan": "hihihihiA",
+      "universal": "A7"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "86",
+    "fields": {
+      "japan": "hihihihiA#",
+      "universal": "A#7"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "87",
+    "fields": {
+      "japan": "hihihihiB",
+      "universal": "B7"
+    }
+  },
+  {
+    "model": "karaoke.scale",
+    "pk": "88",
+    "fields": {
+      "japan": "hihihihiC",
+      "universal": "C8"
+    }
+  }
+]
