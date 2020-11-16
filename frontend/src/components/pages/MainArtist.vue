@@ -3,6 +3,11 @@
     <v-container>
       <v-row>
         <v-col>
+          <v-btn to="/measure/result"> 戻る </v-btn>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col>
           <v-card>
             <v-card-title>{{ songsOfArtistUrl[0].artist_name }}</v-card-title>
             <v-card-text>
@@ -168,11 +173,6 @@
               </v-tab-item>
             </v-tabs-items>
           </v-card>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col>
-          <v-btn to="/measure/result"> 戻る </v-btn>
         </v-col>
       </v-row>
     </v-container>

@@ -3,7 +3,12 @@
     <v-container>
       <v-row>
         <v-col>
-          <v-card >
+          <v-btn router-link :to="'/measure/result/' + artistUrl"> 戻る </v-btn>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col>
+          <v-card>
             <v-container>
               <v-row>
                 <v-col>
@@ -35,14 +40,14 @@
       <v-row>
         <v-col>
           <v-card>
-            <v-tabs v-model="tab" class="elevation-2" >
+            <v-tabs v-model="tab" class="elevation-2">
               <v-tabs-slider></v-tabs-slider>
               <v-tab v-for="i in tabs" :key="i" :href="`#tab-${i}`">
                 {{ i }}
               </v-tab>
             </v-tabs>
 
-            <v-tabs-items v-model="tab" >
+            <v-tabs-items v-model="tab">
               <v-tab-item value="tab-詳細">
                 <v-list v-if="songOfSongUrl">
                   <v-list-item two-line>
@@ -95,11 +100,6 @@
               </v-tab-item>
             </v-tabs-items>
           </v-card>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col>
-          <v-btn router-link :to="'/measure/result/' + artistUrl"> 戻る </v-btn>
         </v-col>
       </v-row>
     </v-container>
