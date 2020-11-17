@@ -15,7 +15,7 @@
       </v-col>
       <v-col>
         <v-select
-          v-model="myVoice.z_heighest"
+          v-model="myVoice.z_highest"
           :items="scale_jp"
           label="地声最高音"
           hint="地声で最も高い音を選んでください"
@@ -27,7 +27,7 @@
       </v-col>
       <v-col>
         <v-select
-          v-model="myVoice.u_heighest"
+          v-model="myVoice.u_highest"
           :items="scale_jp"
           label="裏声最高音"
           hint="裏声で最も高い音を選んでください"

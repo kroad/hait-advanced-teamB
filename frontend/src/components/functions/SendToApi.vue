@@ -19,10 +19,22 @@
 
       <v-stepper-items>
         <v-stepper-content step="2">
-          <v-card class="mb-12" color="grey lighten-1">
-            <Record />
-          </v-card>
           <v-container>
+            <v-row>
+              <v-col>
+                <Record />
+              </v-col>
+            </v-row>
+            <v-row>
+              <v-col>
+                <input
+                  type="file"
+                  accept="audio/wav"
+                  @change="inputVoiceFile"
+                />
+                <audio id="player" controls :src="voiceSourceBlob"></audio>
+              </v-col>
+            </v-row>
             <v-row>
               <v-col>
                 <v-btn @click="e1 = 1" class="mr-4">戻る</v-btn>
@@ -33,9 +45,6 @@
                 >
                   結果を表示
                 </v-btn>
-              </v-col>
-              <v-col>
-                <audio id="player" controls :src="voiceSource"></audio>
               </v-col>
             </v-row>
           </v-container>
@@ -59,29 +68,38 @@ export default {
   data() {
     return {
       e1: 1,
+      voiceFile: null,
+      voiceSourceBlob: "",
     };
   },
   computed: {
-    ...mapGetters(["voiceSource", "myVoice"]),
+    ...mapGetters(["myVoice"]),
   },
   methods: {
     // 後でapiだけを切り出す
     sendToSongApi() {
+      let formData = new FormData();
+      formData.append("file", this.voiceFile);
+      let config = {
+        headers: { "content-type": "multipart/form-data" },
+      };
       axios
-        .get("http://127.0.0.1:8000/api/v1/songs/", {
-          params: {
-            z_lowest: this.myVoice.z_lowest,
-            z_heighest: this.myVoice.z_heighest,
-            // 後で送れるようにする
-            // u_heighest: this.myVoice.u_heighest,
-          },
-        })
+        .post("http://127.0.0.1:8000/api/v1/predict/", formData, config)
         .then((response) => {
-          this.$store.dispatch("addSongs", response);
+          // 後で消す
+          console.log(response);
+          this.$store.dispatch("storeSongs", response);
+          this.$store.dispatch("storeProbAndArtists", response);
         })
         .catch((error) => {
+          // 後でなんとかする
           console.log(error);
         });
+    },
+    inputVoiceFile(e) {
+      let files = e.target.files;
+      this.voiceFile = files[0];
+      this.voiceSourceBlob = window.URL.createObjectURL(this.voiceFile);
     },
   },
 };

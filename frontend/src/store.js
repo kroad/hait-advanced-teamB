@@ -7,12 +7,12 @@ export default new Vuex.Store({
   // グローバル変数みたいなもの
   state: {
     songs: [],
+    prob_and_artists: [],
     myVoice: {
       z_lowest: "",
-      z_heighest: "",
-      u_heighest: "",
+      z_highest: "",
+      u_highest: "",
     },
-    voiceSource: "",
     scale_jp: [
       "lowlowA",
       "lowlowA#",
@@ -197,50 +197,38 @@ export default new Vuex.Store({
 
   // 算出プロパティみたいなもの
   getters: {
-    artists: function(state) {
-      let artists = [];
-      for (let song of state.songs) {
-        if (!artists.includes(song.artist_name)) {
-          artists.push(song.artist_name);
-        }
-      }
-      return artists;
+    myVoiceIndex: (state) => {
+      let z_lowest = state.scale_jp.indexOf(state.myVoice.z_lowest) + 1;
+      let z_highest = state.scale_jp.indexOf(state.myVoice.z_highest) + 1;
+      let u_highest = state.scale_jp.indexOf(state.myVoice.u_highest) + 1;
+      return {
+        z_lowest,
+        z_highest,
+        u_highest,
+      };
     },
     songs: (state) => state.songs,
-    voiceSource: (state) => state.voiceSource,
+    prob_and_artists: (state) => state.prob_and_artists,
     scale_jp: (state) => state.scale_jp,
     scale_uni: (state) => state.scale_uni,
     myVoice: (state) => state.myVoice,
-    myVoiceIndex: (state) => {
-      let z_lowest = state.scale_jp.indexOf(state.myVoice.z_lowest);
-      let z_heighest = state.scale_jp.indexOf(state.myVoice.z_heighest);
-      let u_heighest = state.scale_jp.indexOf(state.myVoice.u_heighest);
-      return {
-        z_lowest,
-        z_heighest,
-        u_heighest,
-      };
-    },
   },
 
   mutations: {
-    addSongs(state, response) {
-      state.songs = response.data;
+    storeSongs(state, response) {
+      state.songs = response.data[1];
     },
-    addVoice(state, blob) {
-      state.voiceSource = window.URL.createObjectURL(blob);
+    storeProbAndArtists(state, response) {
+      state.prob_and_artists = response.data[0];
     },
   },
 
   actions: {
-    addSongs(context, response) {
-      // 後で消す
-      console.log(context);
-      console.log(response);
-      context.commit("addSongs", response);
+    storeSongs(context, response) {
+      context.commit("storeSongs", response);
     },
-    addVoice(context, blob) {
-      context.commit("addVoice", blob);
+    storeProbAndArtists(context, response) {
+      context.commit("storeProbAndArtists", response);
     },
   },
 });
