@@ -7,11 +7,11 @@
 import SendToApi from "../functions/SendToApi";
 
 export default {
-  data() {
-    return {
-      componentId: "SendToApi",
-    };
-  },
+  // data() {
+  //   return {
+  //     componentId: "SendToApi",
+  //   };
+  // },
   components: {
     SendToApi,
   },

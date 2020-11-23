@@ -50,7 +50,12 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["scale_jp", "scale_uni", "myVoice", "myVoiceIndex"]),
+    ...mapGetters("karaoke", [
+      "scale_jp",
+      "scale_uni",
+      "myVoice",
+      "myVoiceIndex",
+    ]),
   },
 };
 </script>

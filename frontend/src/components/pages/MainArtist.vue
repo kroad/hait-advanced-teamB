@@ -190,7 +190,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["songs", "myVoice", "myVoiceIndex"]),
+    ...mapGetters("karaoke",["songs", "myVoice", "myVoiceIndex"]),
     songsOfArtistUrl() {
       let songsOfArtistUrl = [];
       for (let song of this.songs) {
