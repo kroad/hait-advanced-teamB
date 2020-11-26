@@ -1,6 +1,6 @@
 module.exports = {
-  "outputDir": "../static",
-  "indexPath": "../templates/index.html",
+  "outputDir": "dist",
+  "indexPath": "index.html",
   "publicPath": "/",
   "transpileDependencies": [
     "vuetify"
