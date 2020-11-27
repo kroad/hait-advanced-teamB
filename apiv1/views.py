@@ -22,13 +22,13 @@ class MlAPIView(generics.ListCreateAPIView):
         voiceSerializer.save()
         result = predict(settings.BASE_DIR + voiceSerializer.data["file"])
         artists = [i["artist"] for i in result]
-        quesryset = Song.objects.filter(
+        queryset = Song.objects.filter(
             Q(artist__name=artists[0])
             | Q(artist__name=artists[1])
             | Q(artist__name=artists[2])
             | Q(artist__name=artists[3])
             | Q(artist__name=artists[4])
         )
-        songSerializer = SongSerializer(instance=quesryset, many=True)
+        songSerializer = SongSerializer(instance=queryset, many=True)
         response = [result, songSerializer.data]
         return Response(response, status=status.HTTP_201_CREATED)

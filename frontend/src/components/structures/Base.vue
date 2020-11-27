@@ -1,17 +1,21 @@
 <template>
-  <div class="grid_wrapper">
-    <div class="navbar">
-      <Navbar />
+  <div>
+    <div>
+      <div class="grid_wrapper">
+        <div class="navbar">
+          <Navbar />
+        </div>
+        <div class="subbar">
+          <Subbar />
+        </div>
+        <main>
+          <Main />
+        </main>
+        <footer>
+          <Footer />
+        </footer>
+      </div>
     </div>
-    <div class="subbar">
-      <Subbar />
-    </div>
-    <main>
-      <Main />
-    </main>
-    <footer>
-      <Footer />
-    </footer>
   </div>
 </template>
 
@@ -20,6 +24,7 @@ import Navbar from "./Navbar";
 import Subbar from "./Subbar";
 import Main from "./Main";
 import Footer from "./Footer";
+
 export default {
   name: "Base",
   components: {

@@ -117,7 +117,7 @@ export default {
   },
   props: ["artistUrl", "songUrl"],
   computed: {
-    ...mapGetters(["songs"]),
+    ...mapGetters("karaoke",["songs"]),
     songOfSongUrl() {
       let songOfSongUrl;
       for (let song of this.songs) {

@@ -72,7 +72,7 @@ import { mapGetters } from "vuex";
 
 export default {
   computed: {
-    ...mapGetters(["songs", "prob_and_artists", "myVoice"]),
+    ...mapGetters("karaoke", ["songs", "prob_and_artists", "myVoice"]),
   },
 };
 </script>

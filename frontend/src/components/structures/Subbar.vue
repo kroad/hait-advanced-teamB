@@ -16,10 +16,10 @@ export default {
 </script>
 <style scoped>
 div {
-  background-color: #9E9E9E;
+  background-color: #9e9e9e;
   height: 100%;
   width: 50px;
-  transition: width 0.2s;
+  transition: width 0.1s;
 }
 div:hover {
   width: 200px;
