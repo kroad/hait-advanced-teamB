@@ -29,6 +29,22 @@
           <v-list-item-title>{{ item.title }}</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
+      <v-list-item v-if="isLoggedIn" link exact @click="clickLogout">
+        <v-list-item-icon>
+          <v-icon>mdi-logout-variant</v-icon>
+        </v-list-item-icon>
+        <v-list-item-content>
+          <v-list-item-title>ログアウト</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+      <v-list-item v-else link exact @click="clickLogin">
+        <v-list-item-icon>
+          <v-icon>mdi-login-variant</v-icon>
+        </v-list-item-icon>
+        <v-list-item-content>
+          <v-list-item-title>ログイン</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
     </v-list>
   </div>
 </template>
@@ -46,10 +62,32 @@ export default {
         },
         { title: "ランキング", icon: "mdi-trophy", path: "/ranking/" },
         { title: "マイページ", icon: "mdi-account-box", path: "/mypage/" },
-        { title: "ログアウト", icon: "mdi-logout-variant" },
         { title: "設定", icon: "mdi-cog", path: "/setting/" },
       ],
     };
+  },
+  computed: {
+    username: function () {
+      return this.$store.getters["auth/username"];
+    },
+    isLoggedIn: function () {
+      return this.$store.getters["auth/isLoggedIn"];
+    },
+  },
+  methods: {
+    // ログアウトリンク押下
+    clickLogout: function () {
+      this.$store.dispatch("auth/logout");
+      this.$store.dispatch("message/setInfoMessage", {
+        message: "ログアウトしました。",
+      });
+      this.$router.replace("/login");
+    },
+    // ログインリンク押下
+    clickLogin: function () {
+      this.$store.dispatch("message/clearMessages");
+      this.$router.replace("/login");
+    },
   },
 };
 </script>

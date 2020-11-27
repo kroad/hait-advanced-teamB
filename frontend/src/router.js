@@ -8,12 +8,14 @@ import RecordMode from "./components/pages/RecordMode";
 import MainResult from "./components/pages/MainResult";
 import MainArtist from "./components/pages/MainArtist";
 import MainSong from "./components/pages/MainSong";
+import LoginPage from "./components/pages/LoginPage";
 
 Vue.use(Router);
 
 export default new Router({
   mode: "history",
   routes: [
+    { path: "/login", component: LoginPage },
     { path: "/measure", component: ModeChoice },
     { path: "/measure/myvoice", component: MyvoiceMode },
     { path: "/measure/select", component: SelectMode },

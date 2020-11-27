@@ -1,17 +1,24 @@
 <template>
-  <div class="grid_wrapper">
-    <div class="navbar">
-      <Navbar />
+  <div>
+    <div>
+      <div class="grid_wrapper" v-if="isLoggedIn">
+        <div class="navbar">
+          <Navbar />
+        </div>
+        <div class="subbar">
+          <Subbar />
+        </div>
+        <main>
+          <Main />
+        </main>
+        <footer>
+          <Footer />
+        </footer>
+      </div>
+      <div v-else>
+        <LoginPage />
+      </div>
     </div>
-    <div class="subbar">
-      <Subbar />
-    </div>
-    <main>
-      <Main />
-    </main>
-    <footer>
-      <Footer />
-    </footer>
   </div>
 </template>
 
@@ -20,13 +27,20 @@ import Navbar from "./Navbar";
 import Subbar from "./Subbar";
 import Main from "./Main";
 import Footer from "./Footer";
+import LoginPage from "../pages/LoginPage.vue";
+import { mapGetters } from "vuex";
+
 export default {
   name: "Base",
+  computed: {
+    ...mapGetters("auth", ["isLoggedIn"]),
+  },
   components: {
     Navbar,
     Subbar,
     Main,
     Footer,
+    LoginPage,
   },
 };
 </script>
