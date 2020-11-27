@@ -151,3 +151,8 @@ SIMPLE_JWT = {
 # CORS（Cross-Origin Resource Sharing）
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = ("http://localhost:8080", "http://127.0.0.1:8000")
+
+# Djoser
+DJOSER = {
+    "USER_CREATE_PASSWORD_RETYPE": True,
+}

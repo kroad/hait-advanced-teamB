@@ -261,6 +261,24 @@ const authModule = {
   },
   actions: {
     /**
+     * 新規登録
+     */
+    register(context, payload) {
+      return api
+        .post("/auth/users/", {
+          username: payload.username,
+          password: payload.password1,
+          re_password: payload.password2,
+        })
+        .then(() => {
+          context.dispatch("login", {
+            username: payload.username,
+            password: payload.password1,
+          });
+        });
+    },
+    /**
+    /**
      * ログイン
      */
     login(context, payload) {
