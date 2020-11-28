@@ -73,7 +73,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["myVoice"]),
+    ...mapGetters("karaoke", ["myVoice"]),
   },
   methods: {
     // 後でapiだけを切り出す
@@ -88,8 +88,8 @@ export default {
         .then((response) => {
           // 後で消す
           console.log(response);
-          this.$store.dispatch("storeSongs", response);
-          this.$store.dispatch("storeProbAndArtists", response);
+          this.$store.dispatch("karaoke/storeSongs", response);
+          this.$store.dispatch("karaoke/storeProbAndArtists", response);
         })
         .catch((error) => {
           // 後でなんとかする

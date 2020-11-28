@@ -3,6 +3,11 @@
     <v-container>
       <v-row>
         <v-col>
+          <v-btn to="/measure/result"> 戻る </v-btn>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col>
           <v-card>
             <v-card-title>{{ songsOfArtistUrl[0].artist_name }}</v-card-title>
             <v-card-text>
@@ -170,11 +175,6 @@
           </v-card>
         </v-col>
       </v-row>
-      <v-row>
-        <v-col>
-          <v-btn to="/measure/result"> 戻る </v-btn>
-        </v-col>
-      </v-row>
     </v-container>
   </div>
 </template>
@@ -190,7 +190,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["songs", "myVoice", "myVoiceIndex"]),
+    ...mapGetters("karaoke",["songs", "myVoice", "myVoiceIndex"]),
     songsOfArtistUrl() {
       let songsOfArtistUrl = [];
       for (let song of this.songs) {
