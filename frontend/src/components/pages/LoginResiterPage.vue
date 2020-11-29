@@ -124,8 +124,6 @@ export default {
           password: this.loginForm.password,
         })
         .then(() => {
-          // 後で消す
-          console.log("Login succeeded.");
           this.$store.dispatch("message/setInfoMessage", {
             message: "ログインしました。",
           });
@@ -144,8 +142,6 @@ export default {
           password2: this.registerForm.password2,
         })
         .then(() => {
-          // 後で消す
-          console.log("Register succeeded.");
           this.$store.dispatch("message/setInfoMessage", {
             message: "新規登録しました。",
           });
