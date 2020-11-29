@@ -17,7 +17,7 @@
                     <v-text-field
                       v-model="loginForm.username"
                       :rules="[rules.required]"
-                      label="ユーザー名"
+                      label="ユーザー名（username）"
                     ></v-text-field>
                   </v-col>
                   <v-col>
@@ -25,7 +25,7 @@
                       :append-icon="show3 ? 'mdi-eye' : 'mdi-eye-off'"
                       :rules="[rules.required, rules.min]"
                       :type="show3 ? 'text' : 'password'"
-                      label="パスワード"
+                      label="パスワード（password）"
                       hint="At least 8 characters"
                       v-model="loginForm.password"
                       @click:append="show3 = !show3"
@@ -48,7 +48,7 @@
                     <v-text-field
                       v-model="registerForm.username"
                       :rules="[rules.required]"
-                      label="ユーザー名"
+                      label="ユーザー名（username）"
                     ></v-text-field>
                   </v-col>
                   <v-col>
@@ -56,7 +56,7 @@
                       :append-icon="show3 ? 'mdi-eye' : 'mdi-eye-off'"
                       :rules="[rules.required, rules.min]"
                       :type="show3 ? 'text' : 'password'"
-                      label="パスワード"
+                      label="パスワード（password）"
                       hint="At least 8 characters"
                       v-model="registerForm.password1"
                       @click:append="show3 = !show3"
@@ -65,9 +65,9 @@
                   <v-col>
                     <v-text-field
                       :append-icon="show3 ? 'mdi-eye' : 'mdi-eye-off'"
-                      :rules="[rules.required, rules.emailMatch]"
+                      :rules="[rules.required, rules.emailMatch, rules.min]"
                       :type="show3 ? 'text' : 'password'"
-                      label="再入力"
+                      label="再入力（re_password）"
                       hint="confirm the password"
                       v-model="registerForm.password2"
                       @click:append="show3 = !show3"
@@ -124,6 +124,7 @@ export default {
           password: this.loginForm.password,
         })
         .then(() => {
+          // 後で消す
           console.log("Login succeeded.");
           this.$store.dispatch("message/setInfoMessage", {
             message: "ログインしました。",
@@ -143,6 +144,7 @@ export default {
           password2: this.registerForm.password2,
         })
         .then(() => {
+          // 後で消す
           console.log("Register succeeded.");
           this.$store.dispatch("message/setInfoMessage", {
             message: "新規登録しました。",

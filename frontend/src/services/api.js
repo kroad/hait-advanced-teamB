@@ -31,17 +31,22 @@ api.interceptors.request.use(
 // 共通エラー処理
 api.interceptors.response.use(
   function(response) {
+    // 後で消す
+    console.log(response);
     return response;
   },
   function(error) {
-    console.log("error.response=", error.response);
+    // 後で消す
+    console.log("error.response.data=", error.response.data);
+
     const status = error.response ? error.response.status : 500;
 
     // エラーの内容に応じてstoreのメッセージを更新
     let message;
+    let messages;
     if (status === 400) {
       // バリデーションNG
-      let messages = [].concat.apply([], Object.values(error.response.data));
+      messages = error.response.data;
       store.dispatch("message/setWarningMessages", { messages: messages });
     } else if (status === 401) {
       // 認証エラー
@@ -49,7 +54,7 @@ api.interceptors.response.use(
       if (token != null) {
         message = "ログイン有効期限切れ";
       } else {
-        message = "認証エラー";
+        message = "ユーザー名またはパスワードが間違っています";
       }
       store.dispatch("auth/logout");
       store.dispatch("message/setErrorMessage", { message: message });
@@ -62,6 +67,9 @@ api.interceptors.response.use(
       message = "想定外のエラーです。";
       store.dispatch("message/setErrorMessage", { message: message });
     }
+    // 後で消す
+    console.log(message);
+    console.log(messages);
     return Promise.reject(error);
   }
 );
