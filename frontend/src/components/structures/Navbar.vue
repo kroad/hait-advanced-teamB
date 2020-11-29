@@ -53,7 +53,7 @@
           <v-list-item-title>ログアウト</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
-      <v-list-item v-else link exact @click="clickLogin">
+      <v-list-item v-else link exact @click="clickLogin" to="/login/">
         <v-list-item-icon>
           <v-icon>mdi-login-variant</v-icon>
         </v-list-item-icon>
@@ -97,7 +97,6 @@ export default {
     // ログインリンク押下
     clickLogin: function () {
       this.$store.dispatch("message/clearMessages");
-      this.$router.replace("/login");
     },
   },
 };

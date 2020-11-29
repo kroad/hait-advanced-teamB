@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-alert v-if="info" dismissible type="success">{{ info }}</v-alert>
-    <div v-for="(warning, key) in warnings" :key="warning">
+    <div v-for="(warning, key) in warnings" :key="key">
       <v-alert dismissible type="warning"
         >{{ key }}:{{ warning.toString() }}</v-alert
       >
