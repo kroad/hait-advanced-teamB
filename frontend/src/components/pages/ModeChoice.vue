@@ -16,12 +16,12 @@
       <v-card to="/measure/select">
         <v-card-title>最高音・最低音は選択 </v-card-title>
         <v-card-subtitle>
-          スピーカーから出る音で音程をチェックします。測定は一回で終わります
+          スピーカーから音が出ます.測定は一回で終わります
         </v-card-subtitle>
       </v-card>
       <v-card to="/measure/record">
         <v-card-title> 最高音・最低音もマイクで測定 </v-card-title>
-        <v-card-subtitle> 測定は3回します </v-card-subtitle>
+        <v-card-subtitle> 音程をリアルタイムで表示します </v-card-subtitle>
       </v-card>
     </v-container>
   </div>

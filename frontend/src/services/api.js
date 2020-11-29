@@ -13,8 +13,6 @@ const api = axios.create({
 // 共通前処理
 api.interceptors.request.use(
   function(config) {
-    // メッセージをクリア
-    store.dispatch("message/clearMessages");
     // 認証用トークンがあればリクエストヘッダに乗せる
     const token = localStorage.getItem("access");
     if (token) {
@@ -34,14 +32,14 @@ api.interceptors.response.use(
     return response;
   },
   function(error) {
-    console.log("error.response=", error.response);
     const status = error.response ? error.response.status : 500;
 
     // エラーの内容に応じてstoreのメッセージを更新
     let message;
+    let messages;
     if (status === 400) {
       // バリデーションNG
-      let messages = [].concat.apply([], Object.values(error.response.data));
+      messages = error.response.data;
       store.dispatch("message/setWarningMessages", { messages: messages });
     } else if (status === 401) {
       // 認証エラー
@@ -49,7 +47,7 @@ api.interceptors.response.use(
       if (token != null) {
         message = "ログイン有効期限切れ";
       } else {
-        message = "認証エラー";
+        message = "ユーザー名またはパスワードが間違っています";
       }
       store.dispatch("auth/logout");
       store.dispatch("message/setErrorMessage", { message: message });
