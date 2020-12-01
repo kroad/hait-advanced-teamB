@@ -1,16 +1,16 @@
 <template>
   <div>
     <template>
-      <SubbarResult />
+      <Result />
     </template>
   </div>
 </template>
 
 <script>
-import SubbarResult from "../pages/SubbarResult";
+import Result from "../subbar/Result";
 export default {
   components: {
-    SubbarResult,
+    Result,
   },
 };
 </script>
