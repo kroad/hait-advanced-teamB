@@ -8,14 +8,16 @@ import RecordMode from "./components/main/RecordMode";
 import Result from "./components/main/Result";
 import Artist from "./components/main/Artist";
 import Song from "./components/main/Song";
-import LoginResiterPage from "./components/main/LoginResiterPage";
+import LoginResiter from "./components/main/LoginResiter";
+import Piano from "./components/main/Piano";
 
 Vue.use(Router);
 
 export default new Router({
   mode: "history",
   routes: [
-    { path: "/login", component: LoginResiterPage },
+    { path: "/login", component: LoginResiter },
+    { path: "/piano", component: Piano },
     { path: "/measure", component: ModeChoice },
     { path: "/measure/myvoice", component: MyvoiceMode },
     { path: "/measure/select", component: SelectMode },
