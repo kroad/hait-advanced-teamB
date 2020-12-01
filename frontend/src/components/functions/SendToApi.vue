@@ -11,6 +11,7 @@
 
       <v-stepper-items>
         <v-stepper-content step="1">
+          <Keyboard />
           <ScaleSelectForm />
           <v-btn to="/measure/" class="mr-4"> 戻る </v-btn>
           <v-btn color="primary" @click="e1 = 2"> 次へ </v-btn>
@@ -59,11 +60,13 @@ import axios from "axios";
 import Record from "./Record";
 import ScaleSelectForm from "./ScaleSelectForm";
 import { mapGetters } from "vuex";
+import Keyboard from "./Keyboard.vue";
 
 export default {
   components: {
     Record,
     ScaleSelectForm,
+    Keyboard,
   },
   data() {
     return {
