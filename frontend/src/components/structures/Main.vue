@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import AlertMessage from "../pages/AlertMessage";
+import AlertMessage from "../functions/AlertMessage";
 export default {
   components: { AlertMessage },
 };

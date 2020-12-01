@@ -1,14 +1,14 @@
 import Vue from "vue";
 import Router from "vue-router";
 
-import ModeChoice from "./components/pages/ModeChoice";
-import MyvoiceMode from "./components/pages/MyvoiceMode";
-import SelectMode from "./components/pages/SelectMode";
-import RecordMode from "./components/pages/RecordMode";
-import MainResult from "./components/pages/MainResult";
-import MainArtist from "./components/pages/MainArtist";
-import MainSong from "./components/pages/MainSong";
-import LoginResiterPage from "./components/pages/LoginResiterPage";
+import ModeChoice from "./components/main/ModeChoice";
+import MyvoiceMode from "./components/main/MyvoiceMode";
+import SelectMode from "./components/main/SelectMode";
+import RecordMode from "./components/main/RecordMode";
+import Result from "./components/main/Result";
+import Artist from "./components/main/Artist";
+import Song from "./components/main/Song";
+import LoginResiterPage from "./components/main/LoginResiterPage";
 
 Vue.use(Router);
 
@@ -20,11 +20,11 @@ export default new Router({
     { path: "/measure/myvoice", component: MyvoiceMode },
     { path: "/measure/select", component: SelectMode },
     { path: "/measure/record", component: RecordMode },
-    { path: "/measure/result", component: MainResult },
-    { path: "/measure/result/:artistUrl", component: MainArtist, props: true },
+    { path: "/measure/result", component: Result },
+    { path: "/measure/result/:artistUrl", component: Artist, props: true },
     {
       path: "/measure/result/:artistUrl/:songUrl",
-      component: MainSong,
+      component: Song,
       props: true,
     },
   ],
