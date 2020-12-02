@@ -53,7 +53,7 @@
           <v-list-item-title>ログアウト</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
-      <v-list-item v-else link exact @click="clickLogin">
+      <v-list-item v-else link exact @click="clickLogin" to="/login/">
         <v-list-item-icon>
           <v-icon>mdi-login-variant</v-icon>
         </v-list-item-icon>
@@ -71,7 +71,8 @@ export default {
       items: [
         { title: "ホーム", icon: "mdi-home", path: "/measure/select/" },
         { title: "測定", icon: "mdi-microphone", path: "/measure/" },
-        { title: "演奏", icon: "mdi-folder-music", path: "/play/" },
+        { title: "キーを変えて演奏", icon: "mdi-folder-music", path: "/play/" },
+        { title: "鍵盤", icon: "mdi-piano", path: "/piano/" },
         { title: "ランキング", icon: "mdi-trophy", path: "/ranking/" },
         { title: "設定", icon: "mdi-cog", path: "/setting/" },
       ],
@@ -97,7 +98,6 @@ export default {
     // ログインリンク押下
     clickLogin: function () {
       this.$store.dispatch("message/clearMessages");
-      this.$router.replace("/login");
     },
   },
 };

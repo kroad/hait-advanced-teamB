@@ -1,16 +1,20 @@
 <template>
-  <div>
+  <div class="main">
+    <AlertMessage />
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-export default {};
+import AlertMessage from "../functions/AlertMessage";
+export default {
+  components: { AlertMessage },
+};
 </script>
 
 <style scoped>
-div {
-  background-color: #BBDEFB;
+div.main {
+  background-color: #bbdefb;
   height: 100%;
 }
 </style>
