@@ -10,6 +10,7 @@ import Artist from "./components/main/Artist";
 import Song from "./components/main/Song";
 import LoginResiter from "./components/main/LoginResiter";
 import Piano from "./components/main/Piano";
+import Playlist from "./components/main/Playlist";
 
 Vue.use(Router);
 
@@ -29,5 +30,6 @@ export default new Router({
       component: Song,
       props: true,
     },
+    { path: "/playlist", component: Playlist },
   ],
 });
