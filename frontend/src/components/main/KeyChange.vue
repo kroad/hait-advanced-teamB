@@ -93,7 +93,6 @@ export default {
       this.pitchShift.pitch = this.pitch;
     },
     start() {
-      // let audio = this.audio;
       Tone.loaded().then(() => {
         this.audio.start();
       });
