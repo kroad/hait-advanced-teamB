@@ -95,6 +95,7 @@ export default {
   },
   methods: {
     fileToBlob(file) {
+      this.stop();
       if (file) {
         this.src = window.URL.createObjectURL(file);
       }
