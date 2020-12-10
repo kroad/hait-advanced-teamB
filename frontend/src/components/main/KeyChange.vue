@@ -5,9 +5,12 @@
         show-size
         filled
         accept="audio/*"
-        label="test"
+        label="Audioファイルを入れてください"
         @change="fileToBlob"
-        @click:clear="src = null"
+        @click:clear="
+          stop();
+          resetSrc();
+        "
       ></v-file-input>
       <v-slider
         v-model="pitch"
@@ -18,8 +21,16 @@
         thumb-label="always"
         append-icon="mdi-plus"
         prepend-icon="mdi-minus"
-        @click:append="pitchIn"
-        @click:prepend="pitchOut"
+        @click:append="
+          stop();
+          pitchIn();
+          pitchChange();
+        "
+        @click:prepend="
+          stop();
+          pitchOut();
+          pitchChange();
+        "
         @click="
           stop();
           pitchChange();
@@ -55,7 +66,6 @@
       >
         <v-icon dark> mdi-stop </v-icon>
       </v-btn>
-      <p>{{ audio }}</p>
     </v-container>
   </div>
 </template>
@@ -93,8 +103,9 @@ export default {
       this.pitchShift.pitch = this.pitch;
     },
     start() {
+      let audio = this.audio;
       Tone.loaded().then(() => {
-        this.audio.start();
+        audio.start();
       });
     },
     stop() {
@@ -102,6 +113,9 @@ export default {
     },
     restart() {
       this.audio.restart();
+    },
+    resetSrc() {
+      this.src = null;
     },
     pitchOut() {
       this.pitch = this.pitch - 1 || -25;
