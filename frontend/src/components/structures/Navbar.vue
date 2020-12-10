@@ -71,7 +71,11 @@ export default {
       items: [
         { title: "ホーム", icon: "mdi-home", path: "/measure/select/" },
         { title: "測定", icon: "mdi-microphone", path: "/measure/" },
-        { title: "キーを変えて演奏", icon: "mdi-folder-music", path: "/play/" },
+        {
+          title: "キーを変えて演奏",
+          icon: "mdi-folder-music",
+          path: "/keychange/",
+        },
         { title: "鍵盤", icon: "mdi-piano", path: "/piano/" },
         { title: "ランキング", icon: "mdi-trophy", path: "/ranking/" },
         { title: "設定", icon: "mdi-cog", path: "/setting/" },
