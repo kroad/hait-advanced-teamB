@@ -22,19 +22,14 @@
         append-icon="mdi-plus"
         prepend-icon="mdi-minus"
         @click:append="
-          stop();
           pitchIn();
           pitchChange();
         "
         @click:prepend="
-          stop();
           pitchOut();
           pitchChange();
         "
-        @click="
-          stop();
-          pitchChange();
-        "
+        @click="pitchChange()"
       ></v-slider>
       <v-btn
         fab
