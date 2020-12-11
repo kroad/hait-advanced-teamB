@@ -114,10 +114,10 @@ export default {
       this.src = null;
     },
     pitchOut() {
-      this.pitch = this.pitch - 1 || -25;
+      this.pitch = this.pitch - 1;
     },
     pitchIn() {
-      this.pitch = this.pitch + 1 || 25;
+      this.pitch = this.pitch + 1;
     },
   },
 };
