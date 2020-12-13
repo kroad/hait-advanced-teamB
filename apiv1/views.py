@@ -1,8 +1,8 @@
-from rest_framework import status, generics
+from rest_framework import status, generics, viewsets
 from rest_framework.response import Response
 
-from karaoke.models import Song, Voice
-from .serializers import SongSerializer, VoiceSerializer
+from karaoke.models import Song, Voice, Playlist
+from .serializers import SongSerializer, VoiceSerializer, PlaylistSerializer
 
 from django.db.models import Q
 
@@ -32,3 +32,7 @@ class MlAPIView(generics.ListCreateAPIView):
         songSerializer = SongSerializer(instance=queryset, many=True)
         response = [result, songSerializer.data]
         return Response(response, status=status.HTTP_201_CREATED)
+
+class PlaylistViewSet(viewsets.ModelViewSet):
+    queryset = Playlist.objects.all()
+    serializer_class = PlaylistSerializer
