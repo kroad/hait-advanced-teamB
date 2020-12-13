@@ -29,7 +29,7 @@
           <v-list-item-title>{{ item.title }}</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
-      <v-list-item v-if="isLoggedIn" link exact to="/playlist/">
+      <v-list-item v-if="isLoggedIn" link exact to="/playlists/">
         <v-list-item-icon>
           <v-icon>mdi-playlist-music</v-icon>
         </v-list-item-icon>
