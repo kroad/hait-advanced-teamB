@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth import get_user_model
 
 
 class Voice(models.Model):
@@ -85,3 +86,19 @@ class Song(models.Model):
 
     def __str__(self):
         return self.title
+
+class Playlist(models.Model):
+    """プレイリスト"""
+
+    class Meta:
+        db_table = "playlist"
+
+    name = models.CharField(verbose_name="プレイリスト名", max_length=25)
+    user = models.ForeignKey(
+        get_user_model(),
+        on_delete=models.CASCADE,
+        verbose_name = 'ユーザー',
+    )
+    songs = models.ManyToManyField(Song, verbose_name='曲')
+    def __str__(self):
+        return self.name
