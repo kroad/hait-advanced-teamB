@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth import get_user_model
 
 class Voice(models.Model):
     """音声ファイル"""
@@ -85,3 +85,46 @@ class Song(models.Model):
 
     def __str__(self):
         return self.title
+
+class UserScale(models.Model):
+    """ユーザーの最高音・最低音"""
+
+    class Meta:
+        db_table = "user_scale"
+
+    user = models.OneToOneField(get_user_model(), verbose_name="ユーザー", on_delete=models.CASCADE)
+    z_highest = models.ForeignKey(
+        Scale,
+        verbose_name="地声最高音",
+        on_delete=models.PROTECT,
+        related_name="user_z_highest",
+        null=True,
+        blank=True,
+    )
+    z_lowest = models.ForeignKey(
+        Scale,
+        verbose_name="地声最低音",
+        on_delete=models.PROTECT,
+        related_name="user_z_lowest",
+        null=True,
+        blank=True,
+    )
+    u_highest = models.ForeignKey(
+        Scale,
+        verbose_name="裏声最高音",
+        on_delete=models.PROTECT,
+        related_name="user_u_highest",
+        null=True,
+        blank=True,
+    )
+    u_lowest = models.ForeignKey(
+        Scale,
+        verbose_name="裏声最低音",
+        on_delete=models.PROTECT,
+        related_name="user_u_lowest",
+        null=True,
+        blank=True,
+    )
+
+    def __str__(self):
+        return self.user.username

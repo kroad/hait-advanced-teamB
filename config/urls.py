@@ -16,6 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
+from rest_framework import routers
+from apiv1 import views
+
+router = routers.SimpleRouter()
+router.register('user_scale', views.UserScaleViewSet)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -24,4 +29,5 @@ urlpatterns = [
     path("api/v1/auth/", include("djoser.urls")),
     path("api/v1/auth/", include("djoser.urls.jwt")),
     path("api/v1/", include("apiv1.urls")),
+    path('api/v1/', include(router.urls)),
 ]
