@@ -1,5 +1,7 @@
 from rest_framework import status, generics, viewsets
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
+
 
 from karaoke.models import Song, Voice, Playlist
 from .serializers import SongSerializer, VoiceSerializer, PlaylistSerializer
@@ -33,6 +35,8 @@ class MlAPIView(generics.ListCreateAPIView):
         response = [result, songSerializer.data]
         return Response(response, status=status.HTTP_201_CREATED)
 
+
 class PlaylistViewSet(viewsets.ModelViewSet):
     queryset = Playlist.objects.all()
     serializer_class = PlaylistSerializer
+    permission_classes = (IsAuthenticated,)

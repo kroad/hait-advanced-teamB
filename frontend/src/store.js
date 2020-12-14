@@ -309,6 +309,7 @@ const authModule = {
     reload(context) {
       return api.get("/auth/users/me/").then((response) => {
         const user = response.data;
+        console.log(user);
         // storeのユーザー情報を更新
         context.commit("set", { user: user });
         return user;
