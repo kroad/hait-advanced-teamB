@@ -3,8 +3,8 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 
 
-from karaoke.models import Song, Voice, Playlist
-from .serializers import SongSerializer, VoiceSerializer, PlaylistSerializer
+from karaoke.models import Song, Voice, Playlist, UserScale
+from .serializers import SongSerializer, VoiceSerializer, PlaylistSerializer, UserScaleSerializer
 
 from django.db.models import Q
 
@@ -40,3 +40,9 @@ class PlaylistViewSet(viewsets.ModelViewSet):
     queryset = Playlist.objects.all()
     serializer_class = PlaylistSerializer
     permission_classes = (IsAuthenticated,)
+
+class UserScaleViewSet(viewsets.ModelViewSet):
+    """ユーザーの音域のCRUD用APIクラス"""
+
+    queryset = UserScale.objects.all()
+    serializer_class = UserScaleSerializer

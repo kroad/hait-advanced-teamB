@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from karaoke.models import Song, Voice, Playlist
+from karaoke.models import Song, Voice, Playlist, UserScale
 
 from djoser.serializers import UserSerializer
 from django.contrib.auth import get_user_model
@@ -62,14 +62,21 @@ class PlaylistSerializer(serializers.ModelSerializer):
         model = Playlist
         fields = ["id", "name", "user", "songs"]
 
+class UserScaleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserScale
+        fields = "__all__"
 
 User = get_user_model()
 
 
 class SpecialUserSerializer(UserSerializer):
+    userscale = UserScaleSerializer()
     playlist_set = PlaylistSerializer(many=True)
 
     class Meta:
         model = User
-        fields = ["id", "username", "playlist_set"]
+        fields = ["id", "username", "userscale", "playlist_set"]
         read_only_fields = (settings.LOGIN_FIELD,)
+
+

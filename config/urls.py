@@ -21,6 +21,8 @@ from apiv1 import views
 
 playlist_router = routers.SimpleRouter()
 playlist_router.register("playlist", views.PlaylistViewSet)
+user_scale_router = routers.SimpleRouter()
+user_scale_router.register('user_scale', views.UserScaleViewSet)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -30,4 +32,5 @@ urlpatterns = [
     path("api/v1/auth/", include("djoser.urls.jwt")),
     path("api/v1/", include("apiv1.urls")),
     path("api/v1/", include(playlist_router.urls)),
+    path('api/v1/', include(user_scale_router.urls)),
 ]
