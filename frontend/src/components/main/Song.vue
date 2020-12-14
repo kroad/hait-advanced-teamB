@@ -3,7 +3,7 @@
     <v-container>
       <v-row>
         <v-col>
-          <v-btn router-link :to="'/measure/result/' + artistUrl"> 戻る </v-btn>
+          <v-btn :to="'/measure/result/' + artistUrl"> 戻る </v-btn>
         </v-col>
       </v-row>
       <v-row>
@@ -117,7 +117,7 @@ export default {
   },
   props: ["artistUrl", "songUrl"],
   computed: {
-    ...mapGetters("karaoke",["songs"]),
+    ...mapGetters("karaoke", ["songs"]),
     songOfSongUrl() {
       let songOfSongUrl;
       for (let song of this.songs) {
