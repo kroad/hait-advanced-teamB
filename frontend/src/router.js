@@ -10,8 +10,10 @@ import Artist from "./components/main/Artist";
 import Song from "./components/main/Song";
 import LoginResiter from "./components/main/LoginResiter";
 import Piano from "./components/main/Piano";
+import KeyChange from "./components/main/KeyChange";
 import Playlists from "./components/main/Playlists";
 import Playlist from "./components/main/Playlist";
+import PlaylistSong from "./components/main/PlaylistSong";
 
 Vue.use(Router);
 
@@ -20,6 +22,7 @@ export default new Router({
   routes: [
     { path: "/login", component: LoginResiter },
     { path: "/piano", component: Piano },
+    { path: "/keychange", component: KeyChange },
     { path: "/measure", component: ModeChoice },
     { path: "/measure/myvoice", component: MyvoiceMode },
     { path: "/measure/select", component: SelectMode },
@@ -33,5 +36,6 @@ export default new Router({
     },
     { path: "/playlists", component: Playlists },
     { path: "/playlists/:name", component: Playlist, props: true },
+    { path: "/playlists/:name/:songUrl", component: PlaylistSong, props: true },
   ],
 });

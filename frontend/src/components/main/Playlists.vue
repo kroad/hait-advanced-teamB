@@ -1,46 +1,38 @@
 <template>
-  <v-list>
-    <v-list-item>
-      <v-list-item-content>
-        <v-list-item-title> プレイリスト名 </v-list-item-title>
-      </v-list-item-content>
-      <v-list-item-content>
-        <v-list-item-title> 曲数 </v-list-item-title>
-      </v-list-item-content>
-    </v-list-item>
-    <v-divider></v-divider>
-    <v-list-item
-      v-for="playlist in playlists"
-      :key="playlist.id"
-      link
-      :to="'/playlists/' + playlist.name"
+  <v-container>
+    <v-list v-if="playlists.length > 0">
+      <v-list-item>
+        <v-list-item-content>
+          <v-list-item-title> プレイリスト名 </v-list-item-title>
+        </v-list-item-content>
+        <v-list-item-content>
+          <v-list-item-title> 曲数 </v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+      <v-divider></v-divider>
+      <v-list-item
+        v-for="playlist in playlists"
+        :key="playlist.id"
+        link
+        :to="'/playlists/' + playlist.name"
+      >
+        <v-list-item-content>
+          {{ playlist.name }}
+        </v-list-item-content>
+        <v-list-item-content> {{ playlist.songs.length }} </v-list-item-content>
+      </v-list-item>
+    </v-list>
+    <v-alert border="top" colored-border type="info" elevation="2" v-else
+      >登録されたプレイリストはありません</v-alert
     >
-      <v-list-item-content>
-        {{ playlist.name }}
-      </v-list-item-content>
-      <v-list-item-content> {{ playlist.songs.length }} </v-list-item-content>
-    </v-list-item>
-  </v-list>
+  </v-container>
 </template>
 <script>
-import axios from "axios";
+import { mapGetters } from "vuex";
+
 export default {
-  data() {
-    return {
-      playlists: "",
-    };
-  },
-  mounted() {
-    let vm = this;
-    axios
-      .get("http://127.0.0.1:8000/api/v1/playlist/")
-      .then(function(response) {
-        console.log(response.data.results);
-        vm.playlists = response.data.results;
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+  computed: {
+    ...mapGetters("auth", ["playlists"]),
   },
 };
 </script>

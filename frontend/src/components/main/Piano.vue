@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div>
-      <Keyboard />
-    </div>
+    <Keyboard />
   </div>
 </template>
 <script>
