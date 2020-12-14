@@ -42,7 +42,7 @@
           <v-icon>mdi-account-box</v-icon>
         </v-list-item-icon>
         <v-list-item-content>
-          <v-list-item-title>マイページ</v-list-item-title>
+          <v-list-item-title>マイページ（{{ username }}）</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
       <v-list-item v-if="isLoggedIn" link exact @click="clickLogout">
@@ -65,6 +65,8 @@
   </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   data() {
     return {
@@ -83,12 +85,7 @@ export default {
     };
   },
   computed: {
-    username: function () {
-      return this.$store.getters["auth/username"];
-    },
-    isLoggedIn: function () {
-      return this.$store.getters["auth/isLoggedIn"];
-    },
+    ...mapGetters("auth", ["username", "isLoggedIn"]),
   },
   methods: {
     // ログアウトリンク押下

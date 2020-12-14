@@ -243,15 +243,18 @@ const authModule = {
   namespaced: true,
   state: {
     username: "",
+    playlists: [],
     isLoggedIn: false,
   },
   getters: {
     username: (state) => state.username,
+    playlists: (state) => state.playlists,
     isLoggedIn: (state) => state.isLoggedIn,
   },
   mutations: {
     set(state, payload) {
       state.username = payload.user.username;
+      state.playlists = payload.user.playlist_set;
       state.isLoggedIn = true;
     },
     clear(state) {
@@ -311,7 +314,6 @@ const authModule = {
         const user = response.data;
         // storeのユーザー情報を更新
         context.commit("set", { user: user });
-        return user;
       });
     },
   },

@@ -13,6 +13,7 @@ import Piano from "./components/main/Piano";
 import KeyChange from "./components/main/KeyChange";
 import Playlists from "./components/main/Playlists";
 import Playlist from "./components/main/Playlist";
+import PlaylistSong from "./components/main/PlaylistSong";
 
 Vue.use(Router);
 
@@ -35,5 +36,6 @@ export default new Router({
     },
     { path: "/playlists", component: Playlists },
     { path: "/playlists/:name", component: Playlist, props: true },
+    { path: "/playlists/:name/:songUrl", component: PlaylistSong, props: true },
   ],
 });

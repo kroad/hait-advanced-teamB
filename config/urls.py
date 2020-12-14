@@ -19,15 +19,15 @@ from django.views.generic import TemplateView
 from rest_framework import routers
 from apiv1 import views
 
-router = routers.SimpleRouter()
-router.register('playlist', views.PlaylistViewSet)
+playlist_router = routers.SimpleRouter()
+playlist_router.register("playlist", views.PlaylistViewSet)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", TemplateView.as_view(template_name="index.html")),
-    # path("api-auth/", include("rest_framework.urls")),
+    path("api-auth/", include("rest_framework.urls")),
     path("api/v1/auth/", include("djoser.urls")),
     path("api/v1/auth/", include("djoser.urls.jwt")),
     path("api/v1/", include("apiv1.urls")),
-    path("api/v1/", include(router.urls)),
+    path("api/v1/", include(playlist_router.urls)),
 ]
