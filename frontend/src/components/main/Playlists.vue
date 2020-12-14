@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-list>
+    <v-list v-if="playlists.length > 0">
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title> プレイリスト名 </v-list-item-title>
@@ -22,28 +22,16 @@
         <v-list-item-content> {{ playlist.songs.length }} </v-list-item-content>
       </v-list-item>
     </v-list>
+    <p v-else>登録されたプレイリストはありません</p>
+    <p>{{ playlists }}</p>
   </v-container>
 </template>
 <script>
-import axios from "axios";
+import { mapGetters } from "vuex";
+
 export default {
-  data() {
-    return {
-      playlists: "",
-    };
-  },
-  mounted() {
-    console.log("mounted");
-    let vm = this;
-    axios
-      .get("http://127.0.0.1:8000/api/v1/playlist/")
-      .then(function (response) {
-        console.log(response.data.results);
-        vm.playlists = response.data.results;
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+  computed: {
+    ...mapGetters("auth", ["playlists"]),
   },
 };
 </script>
