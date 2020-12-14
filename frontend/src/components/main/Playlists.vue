@@ -22,8 +22,9 @@
         <v-list-item-content> {{ playlist.songs.length }} </v-list-item-content>
       </v-list-item>
     </v-list>
-    <p v-else>登録されたプレイリストはありません</p>
-    <p>{{ playlists }}</p>
+    <v-alert border="top" colored-border type="info" elevation="2" v-else
+      >登録されたプレイリストはありません</v-alert
+    >
   </v-container>
 </template>
 <script>
