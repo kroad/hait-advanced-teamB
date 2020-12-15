@@ -16,7 +16,7 @@
                     {{ songOfSongUrl.title }}
                   </v-card-title>
                   <v-card-subtitle>
-                    {{ songOfSongUrl.artist_name }}
+                    {{ songOfSongUrl.artist.name }}
                   </v-card-subtitle>
                 </v-col>
               </v-row>
@@ -53,7 +53,7 @@
                   <v-list-item two-line>
                     <v-list-item-content>
                       <v-list-item-title>
-                        {{ songOfSongUrl.artist_name }}
+                        {{ songOfSongUrl.artist.name }}
                       </v-list-item-title>
                       <v-list-item-subtitle>
                         アーティスト名
