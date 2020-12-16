@@ -29,7 +29,12 @@
                   <v-icon>mdi-thumb-down-outline</v-icon>
                 </v-col>
                 <v-col cols="2">
-                  <v-dialog v-model="dialog1" scrollable max-width="400px">
+                  <v-dialog
+                    v-model="dialog1"
+                    scrollable
+                    max-width="400px"
+                    v-if="isLoggedIn"
+                  >
                     <template v-slot:activator="{ on, attrs }">
                       <v-btn color="primary" dark v-bind="attrs" v-on="on" icon>
                         <v-icon>mdi-plus-circle-outline</v-icon>
@@ -208,7 +213,7 @@ export default {
   props: ["artistUrl", "songUrl"],
   computed: {
     ...mapGetters("karaoke", ["songs"]),
-    ...mapGetters("auth", ["playlists", "userId"]),
+    ...mapGetters("auth", ["playlists", "userId", "isLoggedIn"]),
     songOfSongUrl() {
       let songOfSongUrl;
       for (let song of this.songs) {
