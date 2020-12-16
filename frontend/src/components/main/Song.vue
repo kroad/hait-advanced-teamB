@@ -29,7 +29,88 @@
                   <v-icon>mdi-thumb-down-outline</v-icon>
                 </v-col>
                 <v-col cols="2">
-                  <v-icon>mdi-plus-circle-outline</v-icon>
+                  <v-dialog v-model="dialog1" scrollable max-width="400px">
+                    <template v-slot:activator="{ on, attrs }">
+                      <v-btn color="primary" dark v-bind="attrs" v-on="on" icon>
+                        <v-icon>mdi-plus-circle-outline</v-icon>
+                      </v-btn>
+                    </template>
+                    <v-card>
+                      <v-card-title
+                        >どのプレイリストに追加しますか？
+                      </v-card-title>
+                      <v-divider></v-divider>
+                      <v-card-text style="height: 300px">
+                        <v-radio-group
+                          v-model="playlistToAdd"
+                          column
+                          v-for="playlist in playlists"
+                          :key="playlist.id"
+                        >
+                          <v-radio
+                            :label="playlist.name"
+                            :value="playlist.id"
+                          ></v-radio>
+                        </v-radio-group>
+                      </v-card-text>
+                      <v-divider></v-divider>
+                      <v-card-actions>
+                        <v-btn
+                          color="blue darken-1"
+                          text
+                          @click="dialog1 = false"
+                        >
+                          閉じる
+                        </v-btn>
+                        <v-btn
+                          color="blue darken-1"
+                          text
+                          @click="dialog1 = false"
+                          :disabled="!playlistToAdd"
+                        >
+                          保存
+                        </v-btn>
+                        <v-btn
+                          color="blue darken-1"
+                          text
+                          @click="dialog2 = !dialog2"
+                        >
+                          新規プレイリストを作成
+                        </v-btn>
+                      </v-card-actions>
+                    </v-card>
+                  </v-dialog>
+                  <v-dialog v-model="dialog2" max-width="500px">
+                    <v-card>
+                      <v-card-title>
+                        <span>新規プレイリスト</span>
+                        <v-spacer></v-spacer>
+                      </v-card-title>
+                      <v-card-text>
+                        <v-text-field
+                          label="プレイリスト名"
+                          v-model="playlist_name"
+                          :rules="[rules.required]"
+                        ></v-text-field>
+                      </v-card-text>
+                      <v-card-actions>
+                        <v-btn color="primary" text @click="dialog2 = false">
+                          閉じる
+                        </v-btn>
+                        <v-btn
+                          color="primary"
+                          text
+                          @click="
+                            dialog2 = false;
+                            dialog1 = false;
+                          "
+                          :disabled="!playlist_name"
+                        >
+                          保存
+                        </v-btn>
+                      </v-card-actions>
+                    </v-card>
+                  </v-dialog>
                 </v-col>
               </v-row>
             </v-container>
@@ -113,11 +194,19 @@ export default {
     return {
       tab: null,
       tabs: ["詳細", "歌詞", "コメント"],
+      playlistToAdd: "",
+      dialog1: false,
+      dialog2: false,
+      playlist_name: "",
+      rules: {
+        required: (value) => !!value || "Required.",
+      },
     };
   },
   props: ["artistUrl", "songUrl"],
   computed: {
     ...mapGetters("karaoke", ["songs"]),
+    ...mapGetters("auth", ["playlists"]),
     songOfSongUrl() {
       let songOfSongUrl;
       for (let song of this.songs) {
