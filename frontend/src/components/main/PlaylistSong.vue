@@ -88,7 +88,7 @@
                     <v-card-text>
                       <v-text-field
                         label="プレイリスト名"
-                        v-model="playlist_name"
+                        v-model="newPlaylist"
                         :rules="[rules.required]"
                       ></v-text-field>
                     </v-card-text>
@@ -102,8 +102,9 @@
                         @click="
                           dialog2 = false;
                           dialog1 = false;
+                          createPlaylist();
                         "
-                        :disabled="!playlist_name"
+                        :disabled="!newPlaylist"
                       >
                         保存
                       </v-btn>
@@ -186,6 +187,7 @@
 </template>
 <script>
 import { mapGetters } from "vuex";
+import api from "@/services/api";
 
 export default {
   data() {
@@ -195,7 +197,7 @@ export default {
       playlistToAdd: "",
       dialog1: false,
       dialog2: false,
-      playlist_name: "",
+      newPlaylist: "",
       rules: {
         required: (value) => !!value || "Required.",
       },
@@ -203,7 +205,7 @@ export default {
   },
   props: ["name", "songUrl"],
   computed: {
-    ...mapGetters("auth", ["playlists"]),
+    ...mapGetters("auth", ["userId", "playlists"]),
     songOfSongUrl() {
       let songOfSongUrl = "";
       let playlist = [];
@@ -218,6 +220,19 @@ export default {
         }
       }
       return songOfSongUrl;
+    },
+  },
+  methods: {
+    createPlaylist() {
+      api
+        .post("/playlist/", {
+          name: this.newPlaylist,
+          user: this.userId,
+          songs: [],
+        })
+        .then(() => {
+          this.$store.dispatch("auth/reload");
+        });
     },
   },
 };

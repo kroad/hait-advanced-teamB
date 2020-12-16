@@ -1,5 +1,6 @@
 from django.db.models import fields
 from rest_framework import serializers
+from drf_writable_nested import WritableNestedModelSerializer
 
 from karaoke.models import Song, Voice, Playlist, Scale, Artist
 
@@ -82,7 +83,7 @@ class SongSerializer(serializers.ModelSerializer):
         # ]
 
 
-class PlaylistSerializer(serializers.ModelSerializer):
+class PlaylistSerializer(WritableNestedModelSerializer):
     songs = SongSerializer(many=True)
 
     class Meta:
