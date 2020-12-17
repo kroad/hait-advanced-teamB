@@ -1,6 +1,8 @@
+from django.db.models import fields
 from rest_framework import serializers
+from drf_writable_nested import WritableNestedModelSerializer
 
-from karaoke.models import Song, Voice, Playlist
+from karaoke.models import Song, Voice, Playlist, Scale, Artist
 
 from djoser.serializers import UserSerializer
 from django.contrib.auth import get_user_model
@@ -13,9 +15,22 @@ class VoiceSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+# class ScaleSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Scale
+#         fields = "__all__"
+
+
+class ArtistSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Artist
+        fields = "__all__"
+
+
 class SongSerializer(serializers.ModelSerializer):
 
-    artist_name = serializers.ReadOnlyField(source="artist.name")
+    # artist_name = serializers.ReadOnlyField(source="artist.name")
+    artist = ArtistSerializer()
 
     z_highest_japan = serializers.ReadOnlyField(source="z_highest.japan")
     z_highest_universal = serializers.ReadOnlyField(source="z_highest.universal")
@@ -33,12 +48,17 @@ class SongSerializer(serializers.ModelSerializer):
     u_lowest_universal = serializers.ReadOnlyField(source="u_lowest.universal")
     u_lowest_id = serializers.ReadOnlyField(source="u_lowest.id")
 
+    # z_highest = ScaleSerializer()
+    # z_lowest = ScaleSerializer()
+    # u_highest = ScaleSerializer()
+    # u_lowest = ScaleSerializer()
+
     class Meta:
         model = Song
         fields = [
             "id",
             "title",
-            "artist_name",
+            "artist",
             "z_highest_japan",
             "z_highest_universal",
             "z_highest_id",
@@ -51,11 +71,19 @@ class SongSerializer(serializers.ModelSerializer):
             "u_lowest_japan",
             "u_lowest_universal",
             "u_lowest_id",
-            "artist",
         ]
+        # fields = [
+        #     "id",
+        #     "title",
+        #     "artist",
+        #     "z_highest",
+        #     "z_lowest",
+        #     "u_highest",
+        #     "u_lowest",
+        # ]
 
 
-class PlaylistSerializer(serializers.ModelSerializer):
+class PlaylistSerializer(WritableNestedModelSerializer):
     songs = SongSerializer(many=True)
 
     class Meta:
