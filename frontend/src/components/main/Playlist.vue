@@ -8,6 +8,7 @@
     <v-row
       ><v-col>
         <v-list v-if="playlist">
+          <v-subheader>{{ playlist.name }}</v-subheader>
           <v-list-item>
             <v-list-item-content>
               <v-list-item-title> 曲名 </v-list-item-title>
