@@ -98,7 +98,7 @@ def predict(data_path: str):
 #print('ネットワーク設定完了：学習済みの重みをロードし、訓練モードに設定しました')
 
 # PyTorchのネットワークパラメータのロード
-    load_path = os.path.join(settings.BASE_DIR, "apiv1/machine_learning/practice_0.h5")
+    load_path = os.path.join(settings.BASE_DIR, "apiv1/machine_learning/weights_fine_tuning_1_0.pth")
     # load_path = '/home/tamahassam/Desktop/hait-advanced-teamB/apiv1/machine_learning/weights_fine_tuning_1_0.pth'
 
     load_weights = torch.load(load_path, map_location={'cuda:0': 'cpu'})
